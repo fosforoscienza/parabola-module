@@ -776,7 +776,7 @@ window.dispatchEvent(new Event('scroll'));
     if(animId)cancelAnimationFrame(animId);
     const angle=+$('angleSlider').value*PI/180,force=+$('forceSlider').value;
     const gY=canvas.height-30,v0=force*.9,vx=v0*Math.cos(angle),vy=v0*Math.sin(angle),g=9.8,sc=0.87;
-    const TAIL=20; // punti di coda visibili dietro alla palla
+    const TAIL=12; // punti di coda visibili dietro alla palla
     const pts=[];let s=0;
     const color=COLORS[traces.length%COLORS.length];
     function step(){
@@ -784,11 +784,13 @@ window.dispatchEvent(new Event('scroll'));
       if(px<canvas.width-10&&py<gY+5){
         pts.push({x:px,y:py});
         base();
-        // disegna solo la coda (ultimi TAIL punti)
-        const tail=pts.slice(-TAIL);
-        ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2.5;
-        tail.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
-        ctx.stroke();
+        // coda: appare solo dopo TAIL punti, così parte subito dietro alla palla
+        if(pts.length>TAIL){
+          const tail=pts.slice(-TAIL);
+          ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2.5;
+          tail.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+          ctx.stroke();
+        }
         // palla
         ctx.beginPath();ctx.arc(px,py,9,0,PI*2);ctx.fillStyle=color;ctx.fill();
         ctx.beginPath();ctx.arc(px-2,py-2,2.5,0,PI*2);ctx.fillStyle='rgba(255,255,255,.7)';ctx.fill();
@@ -848,8 +850,16 @@ window.dispatchEvent(new Event('scroll'));
 // ── ATTIVITÀ 3 – EQUIDISTANZA ──
 (function(){
   const canvas=$('equiCanvas'),ctx=canvas.getContext('2d');
-  const W=canvas.width,H=canvas.height,focX=W/2,focY=H/2-40,dirY=H/2+60,tol=22;
-  let userPts=[],revealed=false;
+  const W=canvas.width,H=canvas.height,tol=22;
+  let focX,focY,dirY,userPts=[],revealed=false;
+  function randomize(){
+    focX=W*0.3+Math.random()*W*0.4;           // tra 30% e 70% della larghezza
+    const sep=80+Math.random()*80;             // distanza fuoco-direttrice: 80–160px
+    const midY=H*0.3+Math.random()*H*0.25;    // centro verticale: 30%–55% altezza
+    focY=midY-sep/2;
+    dirY=midY+sep/2;
+  }
+  randomize();
   function draw(){
     ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
     ctx.strokeStyle='rgba(65,183,255,0.05)';ctx.lineWidth=1;
@@ -889,7 +899,7 @@ window.dispatchEvent(new Event('scroll'));
     draw();
   });
   window.revealParabola=()=>{revealed=true;draw();};
-  window.resetEqui=()=>{userPts=[];revealed=false;$('equiMsg').className='msg info';$('equiMsg').style.display='none';draw();};
+  window.resetEqui=()=>{randomize();userPts=[];revealed=false;$('equiMsg').className='msg info';$('equiMsg').style.display='none';draw();};
   draw();
 })();
 
