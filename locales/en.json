@@ -1,0 +1,128 @@
+{
+  "title": "The Parabola — Fosforo Scienza",
+  "langSwitch": "IT",
+  "logoSub": "The Science Festival",
+  "nav": {
+    "world": "In the world",
+    "explore": "Explore",
+    "discover": "Discover",
+    "definition": "Definition"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Interactive Module",
+    "title": "It all starts<br>from <span class=\"accent\">a shape</span>",
+    "sub": "A journey from suspension bridges to telescope mirrors, until you discover — on your own — what a parabola really is.",
+    "cta": "Start the journey ↓",
+    "scroll": "scroll"
+  },
+  "world": {
+    "label": "The parabola in the world",
+    "title": "This shape is everywhere<br>around you",
+    "intro": "Before any formula, look: how many times a day do you encounter this curve without knowing it?",
+    "caption": "↑ Three animated scenes: launch trajectory · suspension bridge · parabolic reflector",
+    "cards": {
+      "bridges": {
+        "title": "Suspension bridges",
+        "text": "The main cables of the Golden Gate and almost every suspension bridge trace a parabolic curve, perfect for distributing weight."
+      },
+      "mirrors": {
+        "title": "Parabolic mirrors",
+        "text": "Telescopes, satellite dishes and lighthouse reflectors exploit the parabolic shape to concentrate rays and signals at a single point."
+      },
+      "trajectories": {
+        "title": "Trajectories",
+        "text": "A kick, a throw, a jump: any object launched into the air follows exactly a parabola."
+      },
+      "architecture": {
+        "title": "Architecture",
+        "text": "Parabolic arches appear in cathedrals, stadiums and large roof structures: they support enormous loads with structural elegance."
+      },
+      "food": {
+        "title": "Even in food",
+        "text": "The cross-section of an ice cream, the curve of a banana, the water jet of a fountain: all parabolas."
+      },
+      "antenna": {
+        "title": "TV Antennas",
+        "text": "The \"dish\" on your neighbour's balcony is literally half a parabola: it captures the satellite signal and focuses it at a precise point."
+      }
+    },
+    "canvasTraj": "⚽ Trajectory",
+    "canvasBridge": "🌉 Suspension bridge",
+    "canvasReflector": "📡 Reflector"
+  },
+  "canvas": {
+    "directrix": "d (directrix)"
+  },
+  "explore": {
+    "label": "Activity 1 & 2",
+    "title": "Play with these shapes",
+    "intro": "We won't tell you anything yet. First explore, then the explanation will come by itself."
+  },
+  "act1": {
+    "num": "Activity 1 · Launch!",
+    "title": "Launch the ball",
+    "desc": "Change angle and force. Watch the trace left in the air. What shape is it?",
+    "angle": "Launch angle",
+    "force": "Launch force",
+    "launch": "🚀 Launch",
+    "clear": "Clear traces"
+  },
+  "act2": {
+    "num": "Activity 2 · Reflector",
+    "title": "The antenna and rays",
+    "desc": "Move the slider to change the depth of the \"bowl\". Notice where all the parallel rays from above converge.",
+    "depth": "Antenna depth",
+    "hint": "💡 All rays meet at the same point. That point is called the <strong>focus</strong>."
+  },
+  "discover": {
+    "label": "Activity 3 & 4",
+    "title": "Build the curve<br>from scratch",
+    "intro": "You're about to discover for yourself the secret rule that generates this shape."
+  },
+  "act3": {
+    "num": "Activity 3 · Point hunt",
+    "title": "Find the \"right\" points",
+    "desc": "In the plane there is a point <span style=\"color:var(--primary);font-weight:700\">F</span> (focus) and a line <span style=\"color:var(--green);font-weight:700\">d</span> (directrix).<br><br>Click on the points that seem <strong style=\"color:#fff\">equidistant</strong> <span class=\"tip\">?<span class=\"tip-text\">Equidistant = at the same distance from two different things</span></span> from both F and line d.",
+    "reveal": "👁 Reveal the curve",
+    "reset": "Start over",
+    "canvasHint": "Click where you think dist(P,F) = dist(P,d)",
+    "ok": "✅ Correct! That point is truly equidistant from F and d!",
+    "ko": "❌ Not quite: the two distances are not equal. Try again!"
+  },
+  "act4": {
+    "num": "Activity 4 · Measure distances",
+    "title": "Move the point on the curve",
+    "desc": "Drag point <span style=\"color:var(--primary);font-weight:700\">P</span> along the red curve. Observe the two distances. Do you notice anything?",
+    "dfLabel": "Distance from F",
+    "ddLabel": "Distance from d",
+    "diffLabel": "Difference",
+    "drag": "↔ Drag P on the canvas above!",
+    "equal": "✨ Yes! The two distances are (almost) identical! This holds for EVERY point on the curve.",
+    "observe": "↔ Drag P and observe the distances…"
+  },
+  "def": {
+    "label": "The answer",
+    "title": "Now you can say it yourself:<br>what is a parabola?",
+    "intro": "In the previous activities you already discovered it. Here it is, finally, in the language of mathematics.",
+    "text": "A <em>parabola</em> is the set of all points in the plane that are <em>equidistant</em> from a fixed point called the <span class=\"kw\">focus (F)</span> and from a fixed line called the <span class=\"kw\">directrix (d)</span>.<br><br>For every point P on the parabola:",
+    "form1": "Base form — vertical axis, vertex at origin",
+    "form2": "General form — a determines opening and direction",
+    "form3": "Horizontal axis — opens right or left"
+  },
+  "bonus": {
+    "num": "Bonus · Parameters",
+    "title": "Play with a, b, c",
+    "desc": "Now that you know what a parabola is, explore how the coefficients change the curve.",
+    "a": "a (opening)",
+    "b": "b (position)",
+    "c": "c (translation)"
+  },
+  "congrats": {
+    "title": "🎉 You discovered the parabola!",
+    "text": "You started from a bridge and an antenna. You launched balls, measured distances. And now you know what unifies everything: the rule of focus and directrix."
+  },
+  "footer": {
+    "tagline": "The Science Festival",
+    "module": "Interactive Module · The Parabola"
+  }
+}

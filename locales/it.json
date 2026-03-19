@@ -1,0 +1,128 @@
+{
+  "title": "La Parabola — Fosforo Scienza",
+  "langSwitch": "EN",
+  "logoSub": "La Festa della Scienza",
+  "nav": {
+    "world": "Nel mondo",
+    "explore": "Esplora",
+    "discover": "Scopri",
+    "definition": "Definizione"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Modulo interattivo",
+    "title": "Tutto inizia<br>da <span class=\"accent\">una forma</span>",
+    "sub": "Un viaggio dai ponti sospesi agli specchi dei telescopi, fino a scoprire – per conto tuo – cos'è davvero una parabola.",
+    "cta": "Inizia il viaggio ↓",
+    "scroll": "scorri"
+  },
+  "world": {
+    "label": "La parabola nel mondo",
+    "title": "Questa forma è ovunque<br>intorno a te",
+    "intro": "Prima di qualsiasi formula, guarda: quante volte al giorno incontri questa curva senza saperlo?",
+    "caption": "↑ Tre scene animate: traiettoria di lancio · ponte sospeso · riflettore parabolico",
+    "cards": {
+      "bridges": {
+        "title": "Ponti sospesi",
+        "text": "I cavi portanti del Golden Gate e di quasi ogni ponte sospeso disegnano una curva parabolica, perfetta per distribuire il peso."
+      },
+      "mirrors": {
+        "title": "Specchi parabolici",
+        "text": "I telescopi, le antenne satellitari e i riflettori dei fari sfruttano la forma parabolica per concentrare raggi e segnali in un unico punto."
+      },
+      "trajectories": {
+        "title": "Traiettorie",
+        "text": "Un calcio, un lancio, un salto: qualsiasi oggetto lanciato nell'aria percorre esattamente una parabola."
+      },
+      "architecture": {
+        "title": "Architettura",
+        "text": "Archi parabolici compaiono in cattedrali, stadi e coperture di grandi spazi: reggono carichi enormi con eleganza strutturale."
+      },
+      "food": {
+        "title": "Persino nel cibo",
+        "text": "La sezione di un gelato, la curva di una banana, il getto d'acqua di una fontana: tutte parabole."
+      },
+      "antenna": {
+        "title": "Antenne TV",
+        "text": "Il \"piatto\" sul balcone dei tuoi vicini è letteralmente metà parabola: cattura il segnale satellite e lo concentra in un punto preciso."
+      }
+    },
+    "canvasTraj": "⚽ Traiettoria",
+    "canvasBridge": "🌉 Ponte sospeso",
+    "canvasReflector": "📡 Riflettore"
+  },
+  "canvas": {
+    "directrix": "d (direttrice)"
+  },
+  "explore": {
+    "label": "Attività 1 & 2",
+    "title": "Gioca con queste forme",
+    "intro": "Non ti diciamo ancora niente. Prima esplora, poi la spiegazione arriverà da sola."
+  },
+  "act1": {
+    "num": "Attività 1 · Lancia!",
+    "title": "Lancia la palla",
+    "desc": "Cambia angolo e forza. Osserva la traccia che rimane nell'aria. Che forma ha?",
+    "angle": "Angolo di lancio",
+    "force": "Forza del lancio",
+    "launch": "🚀 Lancia",
+    "clear": "Cancella tracce"
+  },
+  "act2": {
+    "num": "Attività 2 · Riflettore",
+    "title": "L'antenna e i raggi",
+    "desc": "Muovi il cursore per cambiare la profondità della \"scodella\". Nota dove convergono tutti i raggi paralleli che arrivano dall'alto.",
+    "depth": "Profondità antenna",
+    "hint": "💡 Tutti i raggi si incontrano nello stesso punto. Quel punto si chiama <strong>fuoco</strong>."
+  },
+  "discover": {
+    "label": "Attività 3 & 4",
+    "title": "Costruisci la curva<br>dal nulla",
+    "intro": "Stai per scoprire tu stesso qual è la regola segreta che genera questa forma."
+  },
+  "act3": {
+    "num": "Attività 3 · Caccia al punto",
+    "title": "Trova i punti \"giusti\"",
+    "desc": "Nel piano c'è un punto <span style=\"color:var(--primary);font-weight:700\">F</span> (fuoco) e una linea <span style=\"color:var(--green);font-weight:700\">d</span> (direttrice).<br><br>Clicca sui punti che ti sembrano <strong style=\"color:#fff\">equidistanti</strong> <span class=\"tip\">?<span class=\"tip-text\">Equidistante = alla stessa distanza da due cose diverse</span></span> sia da F che dalla retta d.",
+    "reveal": "👁 Rivela la curva",
+    "reset": "Ricomincia",
+    "canvasHint": "Clicca dove pensi che dist(P,F) = dist(P,d)",
+    "ok": "✅ Bravo! Quel punto è davvero equidistante da F e da d!",
+    "ko": "❌ Non proprio: le due distanze non sono uguali. Riprova!"
+  },
+  "act4": {
+    "num": "Attività 4 · Misura le distanze",
+    "title": "Muovi il punto sulla curva",
+    "desc": "Trascina il punto <span style=\"color:var(--primary);font-weight:700\">P</span> lungo la curva rossa. Osserva le due distanze. Noti qualcosa?",
+    "dfLabel": "Distanza da F",
+    "ddLabel": "Distanza da d",
+    "diffLabel": "Differenza",
+    "drag": "↔ Trascina P sul canvas qui sopra!",
+    "equal": "✨ Sì! Le due distanze sono (quasi) identiche! Questo vale per OGNI punto sulla curva.",
+    "observe": "↔ Trascina P e osserva le distanze…"
+  },
+  "def": {
+    "label": "La risposta",
+    "title": "Ora puoi dirlo tu stesso:<br>cos'è una parabola?",
+    "intro": "Nelle attività precedenti l'hai già scoperto. Eccola, finalmente, con le parole della matematica.",
+    "text": "Una <em>parabola</em> è l'insieme di tutti i punti del piano che sono <em>equidistanti</em> da un punto fisso chiamato <span class=\"kw\">fuoco (F)</span> e da una retta fissa chiamata <span class=\"kw\">direttrice (d)</span>.<br><br>Per ogni punto P sulla parabola vale sempre:",
+    "form1": "Forma base — asse verticale, vertice nell'origine",
+    "form2": "Forma generale — a determina apertura e direzione",
+    "form3": "Asse orizzontale — si apre a destra o sinistra"
+  },
+  "bonus": {
+    "num": "Bonus · Parametri",
+    "title": "Gioca con a, b, c",
+    "desc": "Ora che sai cos'è una parabola, esplora come i coefficienti cambiano la curva.",
+    "a": "a (apertura)",
+    "b": "b (posizione)",
+    "c": "c (traslazione)"
+  },
+  "congrats": {
+    "title": "🎉 Hai scoperto la parabola!",
+    "text": "Sei partito da un ponte e un'antenna. Hai lanciato palline, hai misurato distanze. E adesso sai cosa unifica tutto: la regola del fuoco e della direttrice."
+  },
+  "footer": {
+    "tagline": "La Festa della Scienza",
+    "module": "Modulo interattivo · La Parabola"
+  }
+}

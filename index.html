@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Parabola — Fosforo Scienza</title>
+<script src="https://cdn.jsdelivr.net/npm/i18next@23/i18next.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@2/i18nextHttpBackend.min.js"></script>
 <style>
 /* ===========================
    RESET & VARIABILI FOSFORO
@@ -77,6 +79,7 @@ header {
   letter-spacing: 0.07em; text-transform: uppercase; margin-top: 1px;
 }
 
+.header-right { display: flex; align-items: center; gap: 8px; }
 nav { display: flex; gap: 4px; }
 nav a {
   color: rgba(255,255,255,0.6); text-decoration: none;
@@ -84,6 +87,15 @@ nav a {
   transition: all .2s; font-weight: 500;
 }
 nav a:hover, nav a.active { color: #fff; background: rgba(65,183,255,0.15); }
+
+.lang-btn {
+  background: rgba(65,183,255,0.12); border: 1px solid rgba(65,183,255,0.35);
+  color: var(--primary); border-radius: var(--radius-pill);
+  padding: 5px 14px; font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; font-family: var(--font); transition: all .2s;
+  letter-spacing: .05em;
+}
+.lang-btn:hover { background: var(--primary); color: var(--bg-dark); }
 
 /* ===========================
    HERO
@@ -376,15 +388,18 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
       <span class="logo-icon">🌐</span>
       <span class="logo-text">
         Fosforo<strong>Scienza</strong>
-        <span class="logo-sub">La Festa della Scienza</span>
+        <span class="logo-sub" data-i18n="logoSub">La Festa della Scienza</span>
       </span>
     </a>
-    <nav>
-      <a href="#world"      class="nav-link">Nel mondo</a>
-      <a href="#explore"    class="nav-link">Esplora</a>
-      <a href="#discover"   class="nav-link">Scopri</a>
-      <a href="#definition" class="nav-link">Definizione</a>
-    </nav>
+    <div class="header-right">
+      <nav>
+        <a href="#world"      class="nav-link" data-i18n="nav.world">Nel mondo</a>
+        <a href="#explore"    class="nav-link" data-i18n="nav.explore">Esplora</a>
+        <a href="#discover"   class="nav-link" data-i18n="nav.discover">Scopri</a>
+        <a href="#definition" class="nav-link" data-i18n="nav.definition">Definizione</a>
+      </nav>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
   </div>
 </header>
 
@@ -394,14 +409,14 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
 <section class="hero" id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-content">
-    <div class="hero-badge">🌐 Fosforo Scienza — Modulo interattivo</div>
-    <h1>Tutto inizia<br>da <span class="accent">una forma</span></h1>
-    <p class="hero-sub">Un viaggio dai ponti sospesi agli specchi dei telescopi, fino a scoprire – per conto tuo – cos'è davvero una parabola.</p>
-    <button class="btn-primary" onclick="document.getElementById('world').scrollIntoView({behavior:'smooth'})">Inizia il viaggio ↓</button>
+    <div class="hero-badge" data-i18n="hero.badge">🌐 Fosforo Scienza — Modulo interattivo</div>
+    <h1 data-i18n-html="hero.title">Tutto inizia<br>da <span class="accent">una forma</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Un viaggio dai ponti sospesi agli specchi dei telescopi, fino a scoprire – per conto tuo – cos'è davvero una parabola.</p>
+    <button class="btn-primary" onclick="document.getElementById('world').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta">Inizia il viaggio ↓</button>
   </div>
   <div class="scroll-hint">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    scorri
+    <span data-i18n="hero.scroll">scorri</span>
   </div>
 </section>
 
@@ -410,47 +425,47 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
 ═══════════════════════════════ -->
 <section class="section section-white" id="world">
   <div class="container">
-    <p class="section-label reveal">La parabola nel mondo</p>
-    <h2 class="section-title reveal">Questa forma è ovunque<br>intorno a te</h2>
-    <p class="section-intro reveal">Prima di qualsiasi formula, guarda: quante volte al giorno incontri questa curva senza saperlo?</p>
+    <p class="section-label reveal" data-i18n="world.label">La parabola nel mondo</p>
+    <h2 class="section-title reveal" data-i18n-html="world.title">Questa forma è ovunque<br>intorno a te</h2>
+    <p class="section-intro reveal" data-i18n="world.intro">Prima di qualsiasi formula, guarda: quante volte al giorno incontri questa curva senza saperlo?</p>
 
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-icon">🌉</div>
-        <h3>Ponti sospesi</h3>
-        <p>I cavi portanti del Golden Gate e di quasi ogni ponte sospeso disegnano una curva parabolica, perfetta per distribuire il peso.</p>
+        <h3 data-i18n="world.cards.bridges.title">Ponti sospesi</h3>
+        <p data-i18n="world.cards.bridges.text">I cavi portanti del Golden Gate e di quasi ogni ponte sospeso disegnano una curva parabolica, perfetta per distribuire il peso.</p>
       </div>
       <div class="card">
         <div class="card-icon">🔭</div>
-        <h3>Specchi parabolici</h3>
-        <p>I telescopi, le antenne satellitari e i riflettori dei fari sfruttano la forma parabolica per concentrare raggi e segnali in un unico punto.</p>
+        <h3 data-i18n="world.cards.mirrors.title">Specchi parabolici</h3>
+        <p data-i18n="world.cards.mirrors.text">I telescopi, le antenne satellitari e i riflettori dei fari sfruttano la forma parabolica per concentrare raggi e segnali in un unico punto.</p>
       </div>
       <div class="card">
         <div class="card-icon">⚽</div>
-        <h3>Traiettorie</h3>
-        <p>Un calcio, un lancio, un salto: qualsiasi oggetto lanciato nell'aria percorre esattamente una parabola.</p>
+        <h3 data-i18n="world.cards.trajectories.title">Traiettorie</h3>
+        <p data-i18n="world.cards.trajectories.text">Un calcio, un lancio, un salto: qualsiasi oggetto lanciato nell'aria percorre esattamente una parabola.</p>
       </div>
       <div class="card">
         <div class="card-icon">🏛️</div>
-        <h3>Architettura</h3>
-        <p>Archi parabolici compaiono in cattedrali, stadi e coperture di grandi spazi: reggono carichi enormi con eleganza strutturale.</p>
+        <h3 data-i18n="world.cards.architecture.title">Architettura</h3>
+        <p data-i18n="world.cards.architecture.text">Archi parabolici compaiono in cattedrali, stadi e coperture di grandi spazi: reggono carichi enormi con eleganza strutturale.</p>
       </div>
       <div class="card">
         <div class="card-icon">🍌</div>
-        <h3>Persino nel cibo</h3>
-        <p>La sezione di un gelato, la curva di una banana, il getto d'acqua di una fontana: tutte parabole.</p>
+        <h3 data-i18n="world.cards.food.title">Persino nel cibo</h3>
+        <p data-i18n="world.cards.food.text">La sezione di un gelato, la curva di una banana, il getto d'acqua di una fontana: tutte parabole.</p>
       </div>
       <div class="card">
         <div class="card-icon">📡</div>
-        <h3>Antenne TV</h3>
-        <p>Il "piatto" sul balcone dei tuoi vicini è letteralmente metà parabola: cattura il segnale satellite e lo concentra in un punto preciso.</p>
+        <h3 data-i18n="world.cards.antenna.title">Antenne TV</h3>
+        <p data-i18n="world.cards.antenna.text">Il "piatto" sul balcone dei tuoi vicini è letteralmente metà parabola: cattura il segnale satellite e lo concentra in un punto preciso.</p>
       </div>
     </div>
 
     <div class="world-canvas-wrap reveal">
       <canvas id="worldCanvas" width="860" height="270"></canvas>
     </div>
-    <p style="text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:10px">
+    <p style="text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:10px" data-i18n="world.caption">
       ↑ Tre scene animate: traiettoria di lancio · ponte sospeso · riflettore parabolico
     </p>
   </div>
@@ -461,42 +476,42 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
 ═══════════════════════════════ -->
 <section class="section section-light" id="explore">
   <div class="container">
-    <p class="section-label reveal">Attività 1 &amp; 2</p>
-    <h2 class="section-title reveal">Gioca con queste forme</h2>
-    <p class="section-intro reveal">Non ti diciamo ancora niente. Prima esplora, poi la spiegazione arriverà da sola.</p>
+    <p class="section-label reveal" data-i18n="explore.label">Attività 1 &amp; 2</p>
+    <h2 class="section-title reveal" data-i18n="explore.title">Gioca con queste forme</h2>
+    <p class="section-intro reveal" data-i18n="explore.intro">Non ti diciamo ancora niente. Prima esplora, poi la spiegazione arriverà da sola.</p>
 
     <div class="activity reveal">
-      <div class="activity-num">Attività 1 · Lancia!</div>
-      <h3>Lancia la palla</h3>
-      <p>Cambia angolo e forza. Osserva la traccia che rimane nell'aria. Che forma ha?</p>
+      <div class="activity-num" data-i18n="act1.num">Attività 1 · Lancia!</div>
+      <h3 data-i18n="act1.title">Lancia la palla</h3>
+      <p data-i18n="act1.desc">Cambia angolo e forza. Osserva la traccia che rimane nell'aria. Che forma ha?</p>
       <div class="slider-row">
-        <label>Angolo di lancio</label>
+        <label data-i18n="act1.angle">Angolo di lancio</label>
         <input type="range" id="angleSlider" min="10" max="80" value="45">
         <span class="val-badge" id="angleVal">45°</span>
       </div>
       <div class="slider-row">
-        <label>Forza del lancio</label>
+        <label data-i18n="act1.force">Forza del lancio</label>
         <input type="range" id="forceSlider" min="20" max="100" value="60">
         <span class="val-badge" id="forceVal">60</span>
       </div>
       <canvas id="throwCanvas" class="interact" width="780" height="300"></canvas>
       <div class="btn-row">
-        <button class="btn-primary" onclick="launchBall()">🚀 Lancia</button>
-        <button class="btn-secondary" onclick="clearThrow()">Cancella tracce</button>
+        <button class="btn-primary" onclick="launchBall()" data-i18n="act1.launch">🚀 Lancia</button>
+        <button class="btn-secondary" onclick="clearThrow()" data-i18n="act1.clear">Cancella tracce</button>
       </div>
     </div>
 
     <div class="activity reveal">
-      <div class="activity-num">Attività 2 · Riflettore</div>
-      <h3>L'antenna e i raggi</h3>
-      <p>Muovi il cursore per cambiare la profondità della "scodella". Nota dove convergono tutti i raggi paralleli che arrivano dall'alto.</p>
+      <div class="activity-num" data-i18n="act2.num">Attività 2 · Riflettore</div>
+      <h3 data-i18n="act2.title">L'antenna e i raggi</h3>
+      <p data-i18n="act2.desc">Muovi il cursore per cambiare la profondità della "scodella". Nota dove convergono tutti i raggi paralleli che arrivano dall'alto.</p>
       <div class="slider-row">
-        <label>Profondità antenna</label>
+        <label data-i18n="act2.depth">Profondità antenna</label>
         <input type="range" id="depthSlider" min="20" max="120" value="60">
         <span class="val-badge" id="depthVal">60</span>
       </div>
       <canvas id="reflectorCanvas" class="interact" width="780" height="340" style="cursor:default"></canvas>
-      <p style="font-size:.88rem;color:var(--green);margin-top:12px;font-weight:600">
+      <p style="font-size:.88rem;color:var(--green);margin-top:12px;font-weight:600" data-i18n-html="act2.hint">
         💡 Tutti i raggi si incontrano nello stesso punto. Quel punto si chiama <strong>fuoco</strong>.
       </p>
     </div>
@@ -508,14 +523,14 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
 ═══════════════════════════════ -->
 <section class="section section-mid" id="discover">
   <div class="container">
-    <p class="section-label reveal">Attività 3 &amp; 4</p>
-    <h2 class="section-title light reveal">Costruisci la curva<br>dal nulla</h2>
-    <p class="section-intro light reveal">Stai per scoprire tu stesso qual è la regola segreta che genera questa forma.</p>
+    <p class="section-label reveal" data-i18n="discover.label">Attività 3 &amp; 4</p>
+    <h2 class="section-title light reveal" data-i18n-html="discover.title">Costruisci la curva<br>dal nulla</h2>
+    <p class="section-intro light reveal" data-i18n="discover.intro">Stai per scoprire tu stesso qual è la regola segreta che genera questa forma.</p>
 
     <div class="activity-dark reveal">
-      <div class="activity-num">Attività 3 · Caccia al punto</div>
-      <h3>Trova i punti "giusti"</h3>
-      <p>
+      <div class="activity-num" data-i18n="act3.num">Attività 3 · Caccia al punto</div>
+      <h3 data-i18n="act3.title">Trova i punti "giusti"</h3>
+      <p data-i18n-html="act3.desc">
         Nel piano c'è un punto <span style="color:var(--primary);font-weight:700">F</span> (fuoco) e una linea
         <span style="color:var(--green);font-weight:700">d</span> (direttrice).
         <br><br>
@@ -526,31 +541,31 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
       <canvas id="equiCanvas" class="interact" width="780" height="380"></canvas>
       <div id="equiMsg" class="msg info" style="display:none"></div>
       <div class="btn-row">
-        <button class="btn-primary" onclick="revealParabola()">👁 Rivela la curva</button>
-        <button class="btn-secondary" onclick="resetEqui()">Ricomincia</button>
+        <button class="btn-primary" onclick="revealParabola()" data-i18n="act3.reveal">👁 Rivela la curva</button>
+        <button class="btn-secondary" onclick="resetEqui()" data-i18n="act3.reset">Ricomincia</button>
       </div>
     </div>
 
     <div class="activity-dark reveal">
-      <div class="activity-num">Attività 4 · Misura le distanze</div>
-      <h3>Muovi il punto sulla curva</h3>
-      <p>Trascina il punto <span style="color:var(--primary);font-weight:700">P</span> lungo la curva rossa. Osserva le due distanze. Noti qualcosa?</p>
+      <div class="activity-num" data-i18n="act4.num">Attività 4 · Misura le distanze</div>
+      <h3 data-i18n="act4.title">Muovi il punto sulla curva</h3>
+      <p data-i18n-html="act4.desc">Trascina il punto <span style="color:var(--primary);font-weight:700">P</span> lungo la curva rossa. Osserva le due distanze. Noti qualcosa?</p>
       <canvas id="distCanvas" class="interact" width="780" height="340" style="cursor:grab"></canvas>
       <div class="dist-stats">
         <div class="stat-box">
-          <div class="stat-label">Distanza da F</div>
+          <div class="stat-label" data-i18n="act4.dfLabel">Distanza da F</div>
           <div class="stat-val" id="dF">—</div>
         </div>
         <div class="stat-box green">
-          <div class="stat-label">Distanza da d</div>
+          <div class="stat-label" data-i18n="act4.ddLabel">Distanza da d</div>
           <div class="stat-val" id="dD">—</div>
         </div>
         <div class="stat-box magenta">
-          <div class="stat-label">Differenza</div>
+          <div class="stat-label" data-i18n="act4.diffLabel">Differenza</div>
           <div class="stat-val" id="dDiff">—</div>
         </div>
       </div>
-      <div id="distMsg" class="msg info">↔ Trascina P sul canvas qui sopra!</div>
+      <div id="distMsg" class="msg info" data-i18n="act4.drag">↔ Trascina P sul canvas qui sopra!</div>
     </div>
   </div>
 </section>
@@ -560,12 +575,12 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
 ═══════════════════════════════ -->
 <section class="section section-dark" id="definition">
   <div class="container">
-    <p class="section-label reveal">La risposta</p>
-    <h2 class="section-title light reveal">Ora puoi dirlo tu stesso:<br>cos'è una parabola?</h2>
-    <p class="section-intro light reveal">Nelle attività precedenti l'hai già scoperto. Eccola, finalmente, con le parole della matematica.</p>
+    <p class="section-label reveal" data-i18n="def.label">La risposta</p>
+    <h2 class="section-title light reveal" data-i18n-html="def.title">Ora puoi dirlo tu stesso:<br>cos'è una parabola?</h2>
+    <p class="section-intro light reveal" data-i18n="def.intro">Nelle attività precedenti l'hai già scoperto. Eccola, finalmente, con le parole della matematica.</p>
 
     <div class="def-box reveal">
-      <p class="big-def">
+      <p class="big-def" data-i18n-html="def.text">
         Una <em>parabola</em> è l'insieme di tutti i punti del piano che sono
         <em>equidistanti</em> da un punto fisso chiamato <span class="kw">fuoco (F)</span>
         e da una retta fissa chiamata <span class="kw">direttrice (d)</span>.
@@ -578,34 +593,34 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
     <div class="formula-row reveal">
       <div class="formula-card">
         <div class="formula">y = ax²</div>
-        <small>Forma base — asse verticale, vertice nell'origine</small>
+        <small data-i18n="def.form1">Forma base — asse verticale, vertice nell'origine</small>
       </div>
       <div class="formula-card">
         <div class="formula">y = ax²+bx+c</div>
-        <small>Forma generale — a determina apertura e direzione</small>
+        <small data-i18n="def.form2">Forma generale — a determina apertura e direzione</small>
       </div>
       <div class="formula-card">
         <div class="formula">x = ay²</div>
-        <small>Asse orizzontale — si apre a destra o sinistra</small>
+        <small data-i18n="def.form3">Asse orizzontale — si apre a destra o sinistra</small>
       </div>
     </div>
 
     <div class="activity-dark reveal" style="margin-top:36px">
-      <div class="activity-num">Bonus · Parametri</div>
-      <h3>Gioca con a, b, c</h3>
-      <p>Ora che sai cos'è una parabola, esplora come i coefficienti cambiano la curva.</p>
+      <div class="activity-num" data-i18n="bonus.num">Bonus · Parametri</div>
+      <h3 data-i18n="bonus.title">Gioca con a, b, c</h3>
+      <p data-i18n="bonus.desc">Ora che sai cos'è una parabola, esplora come i coefficienti cambiano la curva.</p>
       <div class="slider-row">
-        <label style="color:rgba(255,255,255,.6)">a (apertura)</label>
+        <label style="color:rgba(255,255,255,.6)" data-i18n="bonus.a">a (apertura)</label>
         <input type="range" id="aSlider" min="-30" max="30" value="10" step="1">
         <span class="val-badge" id="aVal">1.0</span>
       </div>
       <div class="slider-row">
-        <label style="color:rgba(255,255,255,.6)">b (posizione)</label>
+        <label style="color:rgba(255,255,255,.6)" data-i18n="bonus.b">b (posizione)</label>
         <input type="range" id="bSlider" min="-50" max="50" value="0">
         <span class="val-badge" id="bVal">0</span>
       </div>
       <div class="slider-row">
-        <label style="color:rgba(255,255,255,.6)">c (traslazione)</label>
+        <label style="color:rgba(255,255,255,.6)" data-i18n="bonus.c">c (traslazione)</label>
         <input type="range" id="cSlider" min="-80" max="80" value="0">
         <span class="val-badge" id="cVal">0</span>
       </div>
@@ -614,8 +629,8 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
     </div>
 
     <div class="congrats reveal">
-      <h3>🎉 Hai scoperto la parabola!</h3>
-      <p>Sei partito da un ponte e un'antenna. Hai lanciato palline, hai misurato distanze. E adesso sai cosa unifica tutto: la regola del fuoco e della direttrice.</p>
+      <h3 data-i18n="congrats.title">🎉 Hai scoperto la parabola!</h3>
+      <p data-i18n="congrats.text">Sei partito da un ponte e un'antenna. Hai lanciato palline, hai misurato distanze. E adesso sai cosa unifica tutto: la regola del fuoco e della direttrice.</p>
     </div>
   </div>
 </section>
@@ -626,8 +641,8 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
     <span class="logo-icon">🌐</span>
     <span class="logo-text">Fosforo<strong>Scienza</strong></span>
   </div>
-  <p class="footer-tagline">La Festa della Scienza</p>
-  <p style="margin-top:12px">Modulo interattivo · La Parabola</p>
+  <p class="footer-tagline" data-i18n="footer.tagline">La Festa della Scienza</p>
+  <p style="margin-top:12px" data-i18n="footer.module">Modulo interattivo · La Parabola</p>
 </footer>
 
 <script>
@@ -656,8 +671,49 @@ window.addEventListener('scroll', () => {
 });
 window.dispatchEvent(new Event('scroll'));
 
-// ── HERO CANVAS – rete di punti stile Fosforo ──
-(function(){
+// ── I18N ──
+function updateUI() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = i18next.t(el.getAttribute('data-i18n'));
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = i18next.t(el.getAttribute('data-i18n-html'));
+  });
+  document.title = i18next.t('title');
+  document.documentElement.lang = i18next.language;
+  $('langBtn').textContent = i18next.t('langSwitch');
+}
+
+window.toggleLang = function() {
+  const newLng = i18next.language === 'it' ? 'en' : 'it';
+  i18next.changeLanguage(newLng, () => { updateUI(); });
+};
+
+i18next
+  .use(i18nextHttpBackend)
+  .init({
+    lng: 'it',
+    fallbackLng: 'it',
+    backend: { loadPath: '/locales/{{lng}}.json' }
+  }, function(err) {
+    if (err) { console.warn('i18n load error:', err); }
+    updateUI();
+    initActivities();
+  });
+
+// ── ATTIVITA ──
+function initActivities() {
+  initHeroCanvas();
+  initWorldCanvas();
+  initThrow();
+  initReflector();
+  initEqui();
+  initDist();
+  initFormula();
+}
+
+// ── HERO CANVAS ──
+function initHeroCanvas() {
   const canvas=$('hero-canvas'), ctx=canvas.getContext('2d');
   let W,H,nodes=[],t=0;
   function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
@@ -680,28 +736,17 @@ window.dispatchEvent(new Event('scroll'));
     t+=0.012; requestAnimationFrame(draw);
   }
   draw();
-})();
+}
 
-// ── WORLD CANVAS – 3 scene ──
-(function(){
+// ── WORLD CANVAS ──
+function initWorldCanvas() {
   const canvas=$('worldCanvas'), ctx=canvas.getContext('2d');
   let t=0;
-  function draw(){
-    const W=canvas.width,H=canvas.height;
-    ctx.clearRect(0,0,W,H); ctx.fillStyle='#071e34'; ctx.fillRect(0,0,W,H);
-    const pw=W/3;
-    ctx.save();ctx.rect(0,0,pw,H);ctx.clip();drawTraj(ctx,0,pw,H,t);ctx.restore();
-    ctx.strokeStyle='rgba(65,183,255,0.1)';ctx.lineWidth=1;
-    ctx.beginPath();ctx.moveTo(pw,8);ctx.lineTo(pw,H-8);ctx.stroke();
-    ctx.save();ctx.rect(pw,0,pw,H);ctx.clip();drawBridge(ctx,pw,pw,H,t);ctx.restore();
-    ctx.beginPath();ctx.moveTo(pw*2,8);ctx.lineTo(pw*2,H-8);ctx.stroke();
-    ctx.save();ctx.rect(pw*2,0,pw,H);ctx.clip();drawReflector(ctx,pw*2,pw,H,t);ctx.restore();
-    t+=0.016; requestAnimationFrame(draw);
-  }
+
   function drawTraj(ctx,ox,w,h,t){
     ctx.fillStyle='rgba(65,183,255,0.03)';ctx.fillRect(ox,0,w,h);
     ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
-    ctx.fillText('⚽ Traiettoria',ox+w/2,18);
+    ctx.fillText(i18next.t('world.canvasTraj'),ox+w/2,18);
     const gY=h-35,v0=54,ang=50*PI/180,g=9.8,sc=0.88,vx=v0*Math.cos(ang),vy=v0*Math.sin(ang);
     ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(ox+10,gY);ctx.lineTo(ox+w-10,gY);ctx.stroke();
@@ -718,10 +763,11 @@ window.dispatchEvent(new Event('scroll'));
       ctx.beginPath();ctx.arc(bx-2,by-2,2,0,PI*2);ctx.fillStyle='rgba(255,255,255,.7)';ctx.fill();
     }
   }
+
   function drawBridge(ctx,ox,w,h,t){
     ctx.fillStyle='rgba(204,0,102,0.03)';ctx.fillRect(ox,0,w,h);
     ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
-    ctx.fillText('🌉 Ponte sospeso',ox+w/2,18);
+    ctx.fillText(i18next.t('world.canvasBridge'),ox+w/2,18);
     const gY=h-35,tH=85,pad=28,t1x=ox+pad+12,t2x=ox+w-pad-12;
     ctx.fillStyle='rgba(200,200,255,0.3)';
     ctx.fillRect(t1x-4,gY-tH,8,tH);ctx.fillRect(t2x-4,gY-tH,8,tH);
@@ -733,10 +779,11 @@ window.dispatchEvent(new Event('scroll'));
     ctx.strokeStyle='rgba(65,183,255,0.35)';ctx.lineWidth=1;
     for(let i=1;i<=7;i++){const fr=i/8,cx2=t1x+(t2x-t1x)*fr,f2=(fr-.5)/.5,cy=low+(high-low)*f2*f2;ctx.beginPath();ctx.moveTo(cx2,cy);ctx.lineTo(cx2,gY);ctx.stroke();}
   }
+
   function drawReflector(ctx,ox,w,h,t){
     ctx.fillStyle='rgba(24,180,140,0.03)';ctx.fillRect(ox,0,w,h);
     ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
-    ctx.fillText('📡 Riflettore',ox+w/2,18);
+    ctx.fillText(i18next.t('world.canvasReflector'),ox+w/2,18);
     const cx=ox+w/2,cy=h-38,dep=52,ww=88,a=dep/(ww*ww),focY=cy-dep;
     ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.85)';ctx.lineWidth=3;
     for(let x=-ww;x<=ww;x+=2){const y=cy-a*x*x;x===-ww?ctx.moveTo(cx+x,y):ctx.lineTo(cx+x,y);}
@@ -754,11 +801,24 @@ window.dispatchEvent(new Event('scroll'));
       if(at>.65){const seg=(at-.65)/.35;ctx.strokeStyle=`rgba(65,183,255,${seg*.8})`;ctx.beginPath();ctx.moveTo(rx,hitY);ctx.lineTo(lerp(rx,cx,seg),lerp(hitY,focY,seg));ctx.stroke();}
     }
   }
+
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#071e34'; ctx.fillRect(0,0,W,H);
+    const pw=W/3;
+    ctx.save();ctx.beginPath();ctx.rect(0,0,pw,H);ctx.clip();drawTraj(ctx,0,pw,H,t);ctx.restore();
+    ctx.strokeStyle='rgba(65,183,255,0.1)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(pw,8);ctx.lineTo(pw,H-8);ctx.stroke();
+    ctx.save();ctx.beginPath();ctx.rect(pw,0,pw,H);ctx.clip();drawBridge(ctx,pw,pw,H,t);ctx.restore();
+    ctx.beginPath();ctx.moveTo(pw*2,8);ctx.lineTo(pw*2,H-8);ctx.stroke();
+    ctx.save();ctx.beginPath();ctx.rect(pw*2,0,pw,H);ctx.clip();drawReflector(ctx,pw*2,pw,H,t);ctx.restore();
+    t+=0.016; requestAnimationFrame(draw);
+  }
   draw();
-})();
+}
 
 // ── ATTIVITÀ 1 – LANCIA ──
-(function(){
+function initThrow() {
   const canvas=$('throwCanvas'),ctx=canvas.getContext('2d');
   const COLORS=[PRIMARY,ACCENT,GREEN,'#f5a623','#a78bfa','#fb7185'];
   let traces=[],animId=null;
@@ -774,24 +834,26 @@ window.dispatchEvent(new Event('scroll'));
   }
   window.launchBall=function(){
     if(animId)cancelAnimationFrame(animId);
+    const W=canvas.width,H=canvas.height;
     const angle=+$('angleSlider').value*PI/180,force=+$('forceSlider').value;
-    const gY=canvas.height-30,v0=force*.9,vx=v0*Math.cos(angle),vy=v0*Math.sin(angle),g=9.8,sc=0.87;
-    const TAIL=12; // punti di coda visibili dietro alla palla
+    const gY=H-30;
+    // Scala la velocità così a forza=100 la palla arriva quasi in fondo
+    const v0=force*(W-60)/(100*6.5);
+    const vx=v0*Math.cos(angle),vy=v0*Math.sin(angle),g=9.8,sc=1;
+    const TAIL=12;
     const pts=[];let s=0;
     const color=COLORS[traces.length%COLORS.length];
     function step(){
       const px=40+vx*s*sc,py=gY-(vy*s-.5*g*s*s)*sc;
-      if(px<canvas.width-10&&py<gY+5){
+      if(px<W-10&&py<gY+5){
         pts.push({x:px,y:py});
         base();
-        // coda: appare solo dopo TAIL punti, così parte subito dietro alla palla
         if(pts.length>TAIL){
           const tail=pts.slice(-TAIL);
           ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2.5;
           tail.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
           ctx.stroke();
         }
-        // palla
         ctx.beginPath();ctx.arc(px,py,9,0,PI*2);ctx.fillStyle=color;ctx.fill();
         ctx.beginPath();ctx.arc(px-2,py-2,2.5,0,PI*2);ctx.fillStyle='rgba(255,255,255,.7)';ctx.fill();
         s+=0.12;animId=requestAnimationFrame(step);
@@ -803,10 +865,10 @@ window.dispatchEvent(new Event('scroll'));
   $('angleSlider').oninput=()=>{$('angleVal').textContent=$('angleSlider').value+'°';};
   $('forceSlider').oninput=()=>{$('forceVal').textContent=$('forceSlider').value;};
   base();window.launchBall();
-})();
+}
 
 // ── ATTIVITÀ 2 – RIFLETTORE ──
-(function(){
+function initReflector() {
   const canvas=$('reflectorCanvas'),ctx=canvas.getContext('2d');
   let t=0;
   $('depthSlider').oninput=()=>{$('depthVal').textContent=$('depthSlider').value;};
@@ -826,7 +888,8 @@ window.dispatchEvent(new Event('scroll'));
     if(dirY<H){
       ctx.strokeStyle='rgba(24,180,140,0.4)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
       ctx.beginPath();ctx.moveTo(20,dirY);ctx.lineTo(W-20,dirY);ctx.stroke();ctx.setLineDash([]);
-      ctx.fillStyle='rgba(24,180,140,0.7)';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText('d (direttrice)',cx,dirY-7);
+      ctx.fillStyle='rgba(24,180,140,0.7)';ctx.font='11px sans-serif';ctx.textAlign='center';
+      ctx.fillText(i18next.t('canvas.directrix'),cx,dirY-7);
     }
     const pulse=0.8+0.2*Math.sin(t*5);
     const glow=ctx.createRadialGradient(cx,focY,0,cx,focY,28*pulse);
@@ -845,17 +908,17 @@ window.dispatchEvent(new Event('scroll'));
     t+=0.018;requestAnimationFrame(draw);
   }
   draw();
-})();
+}
 
 // ── ATTIVITÀ 3 – EQUIDISTANZA ──
-(function(){
+function initEqui() {
   const canvas=$('equiCanvas'),ctx=canvas.getContext('2d');
   const W=canvas.width,H=canvas.height,tol=22;
   let focX,focY,dirY,userPts=[],revealed=false;
   function randomize(){
-    focX=W*0.3+Math.random()*W*0.4;           // tra 30% e 70% della larghezza
-    const sep=80+Math.random()*80;             // distanza fuoco-direttrice: 80–160px
-    const midY=H*0.3+Math.random()*H*0.25;    // centro verticale: 30%–55% altezza
+    focX=W*0.3+Math.random()*W*0.4;
+    const sep=80+Math.random()*80;
+    const midY=H*0.3+Math.random()*H*0.25;
     focY=midY-sep/2;
     dirY=midY+sep/2;
   }
@@ -867,7 +930,8 @@ window.dispatchEvent(new Event('scroll'));
     for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
     ctx.strokeStyle='rgba(24,180,140,0.7)';ctx.lineWidth=2;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(20,dirY);ctx.lineTo(W-20,dirY);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='rgba(24,180,140,0.8)';ctx.font='bold 12px sans-serif';ctx.textAlign='left';ctx.fillText('d (direttrice)',26,dirY-8);
+    ctx.fillStyle='rgba(24,180,140,0.8)';ctx.font='bold 12px sans-serif';ctx.textAlign='left';
+    ctx.fillText(i18next.t('canvas.directrix'),26,dirY-8);
     ctx.beginPath();ctx.arc(focX,focY,9,0,PI*2);ctx.fillStyle=PRIMARY;ctx.fill();
     ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('F',focX,focY+18);
     if(revealed){
@@ -887,7 +951,10 @@ window.dispatchEvent(new Event('scroll'));
       ctx.fillStyle=ok?'rgba(65,183,255,0.85)':'rgba(204,0,102,0.75)';ctx.fill();
       ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.lineWidth=1.5;ctx.stroke();
     });
-    if(!revealed){ctx.fillStyle='rgba(255,255,255,0.22)';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText('Clicca dove pensi che dist(P,F) = dist(P,d)',W/2,H-14);}
+    if(!revealed){
+      ctx.fillStyle='rgba(255,255,255,0.22)';ctx.font='12px sans-serif';ctx.textAlign='center';
+      ctx.fillText(i18next.t('act3.canvasHint'),W/2,H-14);
+    }
   }
   canvas.addEventListener('click',e=>{
     const r=canvas.getBoundingClientRect(),sc=canvas.width/r.width;
@@ -895,16 +962,16 @@ window.dispatchEvent(new Event('scroll'));
     userPts.push({x,y});
     const dF=Math.sqrt((x-focX)**2+(y-focY)**2),dD=Math.abs(y-dirY),ok=Math.abs(dF-dD)<tol;
     const m=$('equiMsg');m.className='msg '+(ok?'success':'error');
-    m.textContent=ok?'✅ Bravo! Quel punto è davvero equidistante da F e da d!':'❌ Non proprio: le due distanze non sono uguali. Riprova!';
+    m.textContent=ok?i18next.t('act3.ok'):i18next.t('act3.ko');
     draw();
   });
   window.revealParabola=()=>{revealed=true;draw();};
   window.resetEqui=()=>{randomize();userPts=[];revealed=false;$('equiMsg').className='msg info';$('equiMsg').style.display='none';draw();};
   draw();
-})();
+}
 
 // ── ATTIVITÀ 4 – DISTANZE ──
-(function(){
+function initDist() {
   const canvas=$('distCanvas'),ctx=canvas.getContext('2d');
   const W=canvas.width,H=canvas.height,focX=W/2,focY=H/2-50,dirY=H/2+50;
   const p2=Math.abs(focY-dirY)/2,vY=(focY+dirY)/2;
@@ -940,8 +1007,8 @@ window.dispatchEvent(new Event('scroll'));
     $('dF').textContent=dF.toFixed(2);$('dD').textContent=dD.toFixed(2);
     const diff=Math.abs(dF-dD);$('dDiff').textContent=diff.toFixed(2);
     const dm=$('distMsg');
-    if(diff<1.5){dm.className='msg success';dm.textContent='✨ Sì! Le due distanze sono (quasi) identiche! Questo vale per OGNI punto sulla curva.';}
-    else{dm.className='msg info';dm.textContent='↔ Trascina P e osserva le distanze…';}
+    if(diff<1.5){dm.className='msg success';dm.textContent=i18next.t('act4.equal');}
+    else{dm.className='msg info';dm.textContent=i18next.t('act4.observe');}
   }
   function pos(e){
     const r=canvas.getBoundingClientRect(),sc=canvas.width/r.width;
@@ -955,10 +1022,10 @@ window.dispatchEvent(new Event('scroll'));
   canvas.addEventListener('touchmove',e=>{if(!dragging)return;e.preventDefault();const s=snap(pos(e).x);Px=s.x;Py=s.y;draw();},{passive:false});
   canvas.addEventListener('touchend',()=>dragging=false);
   draw();
-})();
+}
 
 // ── BONUS – FORMULA ──
-(function(){
+function initFormula() {
   const canvas=$('formulaCanvas'),ctx=canvas.getContext('2d');
   const W=canvas.width,H=canvas.height,ox=W/2,oy=H/2,sc=18;
   function draw(){
@@ -995,7 +1062,7 @@ window.dispatchEvent(new Event('scroll'));
   }
   $('aSlider').oninput=draw;$('bSlider').oninput=draw;$('cSlider').oninput=draw;
   draw();
-})();
+}
 </script>
 </body>
 </html>
