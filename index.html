@@ -3,333 +3,422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parabola – Un Viaggio dalla Realtà alla Matematica</title>
+<title>La Parabola — Fosforo Scienza</title>
 <style>
-  :root {
-    --bg: #0f0f1a;
-    --bg2: #16162a;
-    --card: #1e1e35;
-    --accent: #7c6af5;
-    --accent2: #f5a623;
-    --accent3: #4ecdc4;
-    --text: #e8e8f0;
-    --muted: #888aaa;
-    --radius: 16px;
-  }
+/* ===========================
+   RESET & VARIABILI FOSFORO
+   =========================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary:    #41B7FF;
+  --primary-d:  #0095e8;
+  --primary-dk: #006bb0;
+  --accent:     #CC0066;
+  --accent-d:   #a50052;
+  --accent-lt:  #ff1a80;
+  --green:      #18b48c;
 
-  html { scroll-behavior: smooth; }
+  --bg-dark:    #071e34;
+  --bg-mid:     #0d2d4a;
+  --bg-card-dk: #122840;
+  --bg-light:   #f4f4f4;
+  --bg-white:   #ffffff;
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  --text:       #111111;
+  --text-muted: #555566;
+  --text-light: rgba(255,255,255,0.72);
 
-  /* ===== NAV ===== */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(15,15,26,0.92);
-    backdrop-filter: blur(12px);
-    z-index: 100;
-    display: flex; align-items: center; justify-content: center;
-    gap: 6px; padding: 12px 20px;
-    border-bottom: 1px solid rgba(124,106,245,0.2);
-  }
-  .nav-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--muted); cursor: pointer; transition: all .3s;
-  }
-  .nav-dot.active { background: var(--accent); transform: scale(1.4); }
-  .nav-label {
-    font-size: 12px; color: var(--muted); margin-left: 4px;
-    margin-right: 16px; cursor: pointer; transition: color .3s;
-  }
-  .nav-label:hover, .nav-label.active { color: var(--accent); }
+  --border:     #dde3ea;
+  --radius:     10px;
+  --radius-lg:  16px;
+  --radius-pill:9999px;
+  --shadow:     0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg:  0 8px 36px rgba(0,0,0,0.14);
+  --shadow-blue:0 4px 24px rgba(65,183,255,0.22);
 
-  /* ===== SECTIONS ===== */
-  section {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    padding: 100px 24px 60px;
-    position: relative;
-  }
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'Courier New', monospace;
+}
 
-  .container { max-width: 900px; width: 100%; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--text); background: var(--bg-white); line-height: 1.6; overflow-x: hidden; }
 
-  /* ===== HERO ===== */
-  #hero {
-    background: radial-gradient(ellipse at 50% 40%, #1a1040 0%, #0f0f1a 70%);
-    text-align: center;
-  }
-  .hero-tag {
-    display: inline-block;
-    background: rgba(124,106,245,0.15);
-    border: 1px solid rgba(124,106,245,0.4);
-    color: var(--accent);
-    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-    padding: 6px 18px; border-radius: 50px; margin-bottom: 24px;
-  }
-  h1 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    font-weight: 800; line-height: 1.15;
-    background: linear-gradient(135deg, #fff 0%, var(--accent) 60%, var(--accent2) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-  }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 580px; margin: 0 auto 40px; }
+/* ===========================
+   PROGRESS BAR
+   =========================== */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 300;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  transition: width .35s; border-radius: 0 2px 2px 0;
+  width: 0%;
+}
 
-  .scroll-hint {
-    position: absolute; bottom: 30px; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center;
-    gap: 8px; color: var(--muted); font-size: 13px;
-    animation: bounce 2s infinite;
-  }
-  .scroll-hint svg { opacity: .5; }
-  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+/* ===========================
+   HEADER
+   =========================== */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(7,30,52,0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 2px solid var(--primary);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 24px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { font-size: 1.5rem; }
+.logo-text { color: #fff; font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
+.logo-text strong { color: var(--primary); }
+.logo-sub {
+  display: block; font-size: 0.63rem; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.07em; text-transform: uppercase; margin-top: 1px;
+}
 
-  /* ===== SECTION HEADERS ===== */
-  .sec-label {
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 10px;
-  }
-  h2 {
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
-    font-weight: 700; margin-bottom: 16px; line-height: 1.25;
-  }
-  .sec-intro { color: var(--muted); font-size: 1.05rem; margin-bottom: 40px; }
+nav { display: flex; gap: 4px; }
+nav a {
+  color: rgba(255,255,255,0.6); text-decoration: none;
+  padding: 6px 14px; border-radius: var(--radius-pill); font-size: 0.83rem;
+  transition: all .2s; font-weight: 500;
+}
+nav a:hover, nav a.active { color: #fff; background: rgba(65,183,255,0.15); }
 
-  /* ===== CARDS GRID ===== */
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; margin-bottom: 40px; }
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 55%, var(--bg-dark) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--primary), var(--accent));
+}
+#hero-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0.3; pointer-events: none;
+}
+.hero-content {
+  position: relative; text-align: center; padding: 60px 24px 40px;
+  max-width: 700px; margin: 0 auto;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(65,183,255,0.12); border: 1px solid rgba(65,183,255,0.35);
+  color: var(--primary); border-radius: var(--radius-pill);
+  padding: 5px 18px; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-content h1 {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  color: #fff; font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+}
+.hero-content h1 .accent { color: var(--primary); }
+.hero-sub {
+  color: var(--text-light); font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;
+}
 
-  .card {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    transition: transform .3s, border-color .3s;
-    cursor: default;
-    position: relative; overflow: hidden;
-  }
-  .card:hover { transform: translateY(-4px); border-color: rgba(124,106,245,0.4); }
-  .card-icon { font-size: 2.2rem; margin-bottom: 14px; }
-  .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
-  .card p { font-size: .9rem; color: var(--muted); }
+.btn-primary {
+  display: inline-block; background: var(--primary);
+  color: var(--bg-dark); font-weight: 700; padding: 14px 36px;
+  border-radius: var(--radius-pill); border: none; cursor: pointer;
+  font-size: 1rem; font-family: var(--font); text-decoration: none;
+  box-shadow: 0 4px 18px rgba(65,183,255,0.38);
+  transition: all .2s;
+}
+.btn-primary:hover {
+  background: #fff; color: var(--primary-dk);
+  transform: translateY(-2px); box-shadow: 0 6px 28px rgba(65,183,255,0.42);
+}
+.btn-secondary {
+  display: inline-block; background: transparent;
+  color: var(--primary); font-weight: 600; padding: 10px 24px;
+  border-radius: var(--radius-pill); border: 2px solid var(--primary);
+  cursor: pointer; font-size: 0.9rem; font-family: var(--font);
+  transition: all .2s;
+}
+.btn-secondary:hover { background: var(--primary); color: var(--bg-dark); }
 
-  .card::before {
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(circle at 80% 20%, rgba(124,106,245,0.08), transparent 60%);
-    pointer-events:none;
-  }
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.35); font-size: 0.78rem; letter-spacing: .05em;
+  animation: bounce 2.2s infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
-  /* ===== WORLD VISUAL ===== */
-  .world-canvas-wrap {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: var(--radius);
-    padding: 20px; overflow: hidden;
-  }
-  .world-canvas-wrap canvas { width: 100%; height: auto; display: block; border-radius: 8px; }
+/* ===========================
+   SECTIONS
+   =========================== */
+.section { padding: 90px 24px 70px; }
+.section-white { background: var(--bg-white); }
+.section-light { background: var(--bg-light); }
+.section-dark  { background: var(--bg-dark); }
+.section-mid   { background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid)); }
 
-  /* ===== ACTIVITY BLOCKS ===== */
-  .activity {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius);
-    padding: 32px 28px;
-    margin-bottom: 24px;
-    position: relative;
-  }
-  .activity-num {
-    position: absolute; top: -16px; left: 24px;
-    background: var(--accent);
-    color: #fff; font-size: 11px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    padding: 4px 14px; border-radius: 50px;
-  }
-  .activity h3 { font-size: 1.2rem; margin-bottom: 10px; }
-  .activity p  { color: var(--muted); margin-bottom: 16px; font-size: .95rem; }
+.container { max-width: 1000px; margin: 0 auto; }
 
-  /* ===== CONTROLS ===== */
-  .slider-row { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
-  .slider-row label { font-size: .9rem; color: var(--muted); min-width: 140px; }
-  input[type=range] {
-    -webkit-appearance: none; flex: 1; min-width: 120px;
-    height: 6px; border-radius: 4px;
-    background: rgba(255,255,255,0.1); outline: none;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
-    background: var(--accent); cursor: pointer; border: 2px solid #fff;
-  }
-  .val-badge {
-    background: rgba(124,106,245,0.2);
-    color: var(--accent); font-size: .85rem; font-weight: 600;
-    padding: 3px 10px; border-radius: 6px; min-width: 46px; text-align: center;
-  }
+.section-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--primary); margin-bottom: 8px;
+}
 
-  button {
-    background: var(--accent);
-    color: #fff; border: none; border-radius: 10px;
-    padding: 10px 22px; font-size: .9rem; font-weight: 600;
-    cursor: pointer; transition: opacity .2s, transform .15s;
-  }
-  button:hover { opacity: .85; transform: translateY(-1px); }
-  button.secondary {
-    background: transparent;
-    border: 1px solid rgba(124,106,245,0.4);
-    color: var(--accent);
-  }
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800; color: var(--text); margin-bottom: 0;
+}
+.section-title.light { color: #fff; }
+.section-title::after {
+  content: ''; display: block; width: 48px; height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px; margin: 14px 0 36px;
+}
+.section-intro { color: var(--text-muted); font-size: 1.03rem; margin-bottom: 40px; max-width: 640px; margin-top: -20px; }
+.section-intro.light { color: rgba(255,255,255,0.55); }
 
-  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+/* ===========================
+   CARDS — sezione mondo
+   =========================== */
+.cards-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px;
+  margin-bottom: 36px;
+}
+.card {
+  background: var(--bg-white); border-radius: var(--radius);
+  padding: 28px 24px; border: 1px solid var(--border);
+  box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-blue); }
+.card-icon { font-size: 2.1rem; margin-bottom: 12px; }
+.card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--primary-dk); font-weight: 700; }
+.card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
 
-  canvas.interact {
-    display: block; width: 100%; height: auto;
-    border-radius: 10px; cursor: crosshair;
-    background: #12122a;
-    margin-top: 16px;
-  }
+/* ===========================
+   WORLD CANVAS
+   =========================== */
+.world-canvas-wrap {
+  background: var(--bg-card-dk); border: 1px solid rgba(65,183,255,0.12);
+  border-radius: var(--radius-lg); padding: 16px; overflow: hidden;
+}
+.world-canvas-wrap canvas { width: 100%; height: auto; display: block; border-radius: 8px; }
 
-  /* ===== SCORE / MESSAGE ===== */
-  .msg {
-    text-align: center; font-size: 1rem; font-weight: 600;
-    padding: 12px 20px; border-radius: 10px;
-    background: rgba(78,205,196,0.12);
-    border: 1px solid rgba(78,205,196,0.3);
-    color: var(--accent3);
-    margin-top: 14px; display: none;
-  }
+/* ===========================
+   ACTIVITY BLOCKS
+   =========================== */
+.activity {
+  background: var(--bg-white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 36px 30px;
+  box-shadow: var(--shadow); margin-bottom: 26px; position: relative;
+}
+.activity-num {
+  position: absolute; top: -14px; left: 24px;
+  background: var(--primary); color: var(--bg-dark);
+  font-size: 0.72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 16px; border-radius: var(--radius-pill);
+}
+.activity h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary-dk); margin-bottom: 10px; }
+.activity p  { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
 
-  /* ===== DEFINITION SECTION ===== */
-  #definition {
-    background: radial-gradient(ellipse at 50% 60%, #0e1a35 0%, #0f0f1a 70%);
-  }
+.activity-dark {
+  background: var(--bg-card-dk); border: 1px solid rgba(65,183,255,0.13);
+  border-radius: var(--radius-lg); padding: 36px 30px;
+  margin-bottom: 26px; position: relative;
+}
+.activity-dark .activity-num { background: var(--primary); color: var(--bg-dark); }
+.activity-dark h3 { color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.activity-dark p  { color: rgba(255,255,255,0.55); font-size: 0.95rem; margin-bottom: 16px; }
 
-  .def-box {
-    background: linear-gradient(135deg, rgba(124,106,245,0.12), rgba(78,205,196,0.06));
-    border: 1px solid rgba(124,106,245,0.35);
-    border-radius: var(--radius);
-    padding: 36px 32px;
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .def-box .big-def {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    line-height: 1.8; color: var(--text);
-  }
-  .def-box em { color: var(--accent2); font-style: normal; font-weight: 700; }
-  .def-box .keyword { color: var(--accent); font-weight: 700; }
+/* ===========================
+   CONTROLS
+   =========================== */
+.slider-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
+.slider-row label { font-size: .88rem; color: var(--text-muted); min-width: 140px; font-weight: 500; }
+input[type=range] {
+  -webkit-appearance: none; flex: 1; min-width: 120px;
+  height: 5px; border-radius: 3px;
+  background: rgba(0,0,0,0.1); outline: none; accent-color: var(--primary);
+}
+.activity-dark input[type=range] { background: rgba(255,255,255,0.1); }
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--primary); cursor: pointer; border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(65,183,255,0.4);
+}
+.val-badge {
+  background: rgba(65,183,255,0.12); color: var(--primary);
+  font-size: .83rem; font-weight: 700; font-family: var(--mono);
+  padding: 3px 10px; border-radius: 6px; min-width: 48px; text-align: center;
+  border: 1px solid rgba(65,183,255,0.25);
+}
 
-  .formula-row {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    gap: 16px; margin-top: 28px;
-  }
-  .formula-card {
-    background: var(--card); border-radius: var(--radius);
-    padding: 20px; border: 1px solid rgba(255,255,255,0.06);
-  }
-  .formula-card .formula { font-size: 1.4rem; font-family: monospace; color: var(--accent2); margin-bottom: 8px; }
-  .formula-card small { color: var(--muted); font-size: .85rem; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
 
-  /* ===== CONGRATS ===== */
-  .confetti-banner {
-    background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(124,106,245,0.12));
-    border: 1px solid rgba(245,166,35,0.3);
-    border-radius: var(--radius); padding: 32px;
-    text-align: center; margin-top: 40px;
-  }
-  .confetti-banner h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--accent2); }
-  .confetti-banner p  { color: var(--muted); }
+canvas.interact {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--radius); cursor: crosshair;
+  background: #0a1929; margin-top: 16px;
+  border: 1px solid rgba(65,183,255,0.1);
+}
 
-  /* ===== PROGRESS BAR ===== */
-  .progress-bar {
-    position: fixed; top: 0; left: 0;
-    height: 3px; background: var(--accent);
-    transition: width .4s; z-index: 200; border-radius: 0 2px 2px 0;
-  }
+/* ===========================
+   MESSAGES
+   =========================== */
+.msg {
+  padding: 12px 18px; border-radius: var(--radius);
+  font-size: .93rem; font-weight: 600; margin-top: 14px; display: none;
+}
+.msg.success { background: rgba(24,180,140,0.1); border: 1px solid rgba(24,180,140,0.3); color: var(--green); display: block; }
+.msg.error   { background: rgba(204,0,102,0.08); border: 1px solid rgba(204,0,102,0.25); color: var(--accent-lt); display: block; }
+.msg.info    { background: rgba(65,183,255,0.08); border: 1px solid rgba(65,183,255,0.2); color: var(--primary); display: block; }
 
-  /* ===== REVEAL ANIMATION ===== */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
-  .reveal.visible { opacity: 1; transform: none; }
+/* ===========================
+   TOOLTIP
+   =========================== */
+.tip {
+  display: inline-block; background: rgba(65,183,255,0.12);
+  border: 1px solid rgba(65,183,255,0.3); color: var(--primary);
+  font-size: .78rem; padding: 1px 9px; border-radius: 6px;
+  margin-left: 6px; cursor: help; position: relative;
+}
+.tip-text {
+  display: none; position: absolute; bottom: 135%; left: 50%; transform: translateX(-50%);
+  background: var(--bg-card-dk); border: 1px solid rgba(65,183,255,0.25);
+  color: var(--text-light); font-size: .8rem; padding: 8px 12px;
+  border-radius: 8px; width: 210px; text-align: center; z-index: 50;
+}
+.tip:hover .tip-text { display: block; }
 
-  /* ===== TOOLTIP ===== */
-  .tip {
-    display: inline-block; background: rgba(124,106,245,0.2);
-    border: 1px solid rgba(124,106,245,0.35);
-    color: var(--accent); font-size: .82rem; padding: 2px 10px;
-    border-radius: 6px; margin-left: 6px; cursor: help;
-    position: relative;
-  }
-  .tip-text {
-    display: none; position: absolute; bottom: 130%; left: 50%;
-    transform: translateX(-50%);
-    background: #2a2a45; border: 1px solid rgba(124,106,245,.3);
-    color: var(--text); font-size: .82rem; padding: 8px 12px;
-    border-radius: 8px; width: 220px; text-align: center; z-index: 50;
-    pointer-events: none;
-  }
-  .tip:hover .tip-text { display: block; }
+/* ===========================
+   DEFINITION SECTION
+   =========================== */
+.def-box {
+  background: rgba(65,183,255,0.06); border: 1px solid rgba(65,183,255,0.25);
+  border-radius: var(--radius-lg); padding: 40px 36px; text-align: center;
+  margin-bottom: 36px;
+}
+.def-box .big-def { font-size: clamp(1rem, 2.5vw, 1.25rem); line-height: 1.85; color: var(--text-light); }
+.def-box em  { color: var(--primary); font-style: normal; font-weight: 700; }
+.def-box .kw { color: var(--accent-lt); font-weight: 700; }
+.def-formula { font-size: 1.6rem; font-family: var(--mono); color: var(--primary); margin: 16px 0 0; font-weight: 700; }
 
-  /* ===== RESPONSIVE ===== */
-  @media(max-width:600px) {
-    section { padding: 80px 16px 50px; }
-    .activity { padding: 28px 18px; }
-    .def-box  { padding: 24px 18px; }
-  }
+.formula-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; margin-top: 28px; }
+.formula-card {
+  background: var(--bg-card-dk); border: 1px solid rgba(65,183,255,0.12);
+  border-radius: var(--radius); padding: 22px;
+}
+.formula-card .formula { font-size: 1.3rem; font-family: var(--mono); color: var(--primary); margin-bottom: 8px; font-weight: 700; }
+.formula-card small { color: rgba(255,255,255,0.45); font-size: .83rem; }
+
+/* ===========================
+   DISTANCE STATS
+   =========================== */
+.dist-stats { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+.stat-box {
+  flex: 1; min-width: 130px; border-radius: var(--radius); padding: 14px 18px;
+  background: var(--bg-card-dk); border: 1px solid rgba(65,183,255,0.12);
+}
+.stat-box .stat-label { font-size: .78rem; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+.stat-box .stat-val { font-size: 1.4rem; font-weight: 700; font-family: var(--mono); color: var(--primary); }
+.stat-box.green .stat-val { color: var(--green); }
+.stat-box.magenta .stat-val { color: var(--accent-lt); }
+
+/* ===========================
+   CONGRATS
+   =========================== */
+.congrats {
+  background: rgba(65,183,255,0.06); border: 1px solid rgba(65,183,255,0.2);
+  border-radius: var(--radius-lg); padding: 40px 32px; text-align: center; margin-top: 44px;
+}
+.congrats h3 { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+.congrats p { color: rgba(255,255,255,0.5); }
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
+  background: var(--bg-dark); padding: 36px 24px; text-align: center;
+  border-top: 2px solid var(--primary);
+}
+footer .logo-text { font-size: 1.05rem; }
+footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
+.footer-tagline { color: var(--primary); font-size: .73rem; text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; }
+
+/* ===========================
+   REVEAL
+   =========================== */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s, transform .65s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media(max-width:768px) {
+  nav { display: none; }
+  .section { padding: 70px 16px 50px; }
+  .activity, .activity-dark { padding: 28px 18px; }
+  .def-box { padding: 28px 18px; }
+}
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
 
-<nav id="mainNav">
-  <div class="nav-dot active" data-sec="0" onclick="scrollToSec(0)"></div>
-  <div class="nav-label active" data-sec="0" onclick="scrollToSec(0)">Intro</div>
-  <div class="nav-dot" data-sec="1" onclick="scrollToSec(1)"></div>
-  <div class="nav-label" data-sec="1" onclick="scrollToSec(1)">Nel mondo</div>
-  <div class="nav-dot" data-sec="2" onclick="scrollToSec(2)"></div>
-  <div class="nav-label" data-sec="2" onclick="scrollToSec(2)">Esplora</div>
-  <div class="nav-dot" data-sec="3" onclick="scrollToSec(3)"></div>
-  <div class="nav-label" data-sec="3" onclick="scrollToSec(3)">Scopri</div>
-  <div class="nav-dot" data-sec="4" onclick="scrollToSec(4)"></div>
-  <div class="nav-label" data-sec="4" onclick="scrollToSec(4)">Definizione</div>
-</nav>
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-inner">
+    <a href="#hero" class="logo-wrap">
+      <span class="logo-icon">🌐</span>
+      <span class="logo-text">
+        Fosforo<strong>Scienza</strong>
+        <span class="logo-sub">La Festa della Scienza</span>
+      </span>
+    </a>
+    <nav>
+      <a href="#world"      class="nav-link">Nel mondo</a>
+      <a href="#explore"    class="nav-link">Esplora</a>
+      <a href="#discover"   class="nav-link">Scopri</a>
+      <a href="#definition" class="nav-link">Definizione</a>
+    </nav>
+  </div>
+</header>
 
-<!-- ════════════════════════════════════════
-     SECTION 0 – HERO
-════════════════════════════════════════ -->
-<section id="hero">
-  <div class="container" style="text-align:center">
-    <div class="hero-tag">Modulo interattivo · Matematica</div>
-    <h1>Tutto inizia<br>da una forma</h1>
+<!-- ═══════════════════════════════
+     HERO
+═══════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">🌐 Fosforo Scienza — Modulo interattivo</div>
+    <h1>Tutto inizia<br>da <span class="accent">una forma</span></h1>
     <p class="hero-sub">Un viaggio dai ponti sospesi agli specchi dei telescopi, fino a scoprire – per conto tuo – cos'è davvero una parabola.</p>
-    <button onclick="scrollToSec(1)">Inizia il viaggio →</button>
+    <button class="btn-primary" onclick="document.getElementById('world').scrollIntoView({behavior:'smooth'})">Inizia il viaggio ↓</button>
   </div>
   <div class="scroll-hint">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     scorri
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     SECTION 1 – NEL MONDO
-════════════════════════════════════════ -->
-<section id="world">
+<!-- ═══════════════════════════════
+     NEL MONDO
+═══════════════════════════════ -->
+<section class="section section-white" id="world">
   <div class="container">
-    <p class="sec-label reveal">La parabola nel mondo</p>
-    <h2 class="reveal">Questa forma è ovunque<br>intorno a te</h2>
-    <p class="sec-intro reveal">Prima di qualsiasi formula, guarda: quante volte al giorno incontri questa curva senza saperlo?</p>
+    <p class="section-label reveal">La parabola nel mondo</p>
+    <h2 class="section-title reveal">Questa forma è ovunque<br>intorno a te</h2>
+    <p class="section-intro reveal">Prima di qualsiasi formula, guarda: quante volte al giorno incontri questa curva senza saperlo?</p>
 
-    <div class="cards reveal">
+    <div class="cards-grid reveal">
       <div class="card">
         <div class="card-icon">🌉</div>
         <h3>Ponti sospesi</h3>
-        <p>I cavi portanti del Golden Gate e di quasi ogni ponte sospeso disegnano una curva a forma di parabola, perfetta per distribuire il peso.</p>
+        <p>I cavi portanti del Golden Gate e di quasi ogni ponte sospeso disegnano una curva parabolica, perfetta per distribuire il peso.</p>
       </div>
       <div class="card">
         <div class="card-icon">🔭</div>
@@ -339,48 +428,47 @@
       <div class="card">
         <div class="card-icon">⚽</div>
         <h3>Traiettorie</h3>
-        <p>Un calcio, un lancio, un salto: qualsiasi oggetto lanciato nell'aria – ignorando la resistenza – percorre esattamente una parabola.</p>
+        <p>Un calcio, un lancio, un salto: qualsiasi oggetto lanciato nell'aria percorre esattamente una parabola.</p>
       </div>
       <div class="card">
         <div class="card-icon">🏛️</div>
         <h3>Architettura</h3>
-        <p>Archi parabolici compaiono in cattedrali gotiche, stadi moderni e coperture di grandi spazi: reggono enormi carichi con eleganza.</p>
+        <p>Archi parabolici compaiono in cattedrali, stadi e coperture di grandi spazi: reggono carichi enormi con eleganza strutturale.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🍦</div>
-        <h3>... e nel cibo</h3>
-        <p>La sezione di un gelato, la curva di un banana, persino l'arco di un getto d'acqua da una fontana: tutte parabole.</p>
+        <div class="card-icon">🍌</div>
+        <h3>Persino nel cibo</h3>
+        <p>La sezione di un gelato, la curva di una banana, il getto d'acqua di una fontana: tutte parabole.</p>
       </div>
       <div class="card">
         <div class="card-icon">📡</div>
         <h3>Antenne TV</h3>
-        <p>Il "piatto" sul balcone dei tuoi vicini è letteralmente metà parabola: cattura il segnale satellite e lo riflette verso un punto preciso.</p>
+        <p>Il "piatto" sul balcone dei tuoi vicini è letteralmente metà parabola: cattura il segnale satellite e lo concentra in un punto preciso.</p>
       </div>
     </div>
 
-    <!-- World animation canvas -->
     <div class="world-canvas-wrap reveal">
-      <canvas id="worldCanvas" width="800" height="260"></canvas>
+      <canvas id="worldCanvas" width="860" height="270"></canvas>
     </div>
-    <p style="font-size:.82rem;color:var(--muted);text-align:center;margin-top:10px">↑ Tre esempi animati: traiettoria, ponte sospeso, riflettore parabolico</p>
+    <p style="text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:10px">
+      ↑ Tre scene animate: traiettoria di lancio · ponte sospeso · riflettore parabolico
+    </p>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     SECTION 2 – ESPLORA (attività)
-════════════════════════════════════════ -->
-<section id="explore">
+<!-- ═══════════════════════════════
+     ESPLORA – attività 1 & 2
+═══════════════════════════════ -->
+<section class="section section-light" id="explore">
   <div class="container">
-    <p class="sec-label reveal">Attività 1 & 2</p>
-    <h2 class="reveal">Gioca con queste forme</h2>
-    <p class="sec-intro reveal">Non ti diciamo ancora niente. Prima esplora, poi la spiegazione arriverà da sola.</p>
+    <p class="section-label reveal">Attività 1 &amp; 2</p>
+    <h2 class="section-title reveal">Gioca con queste forme</h2>
+    <p class="section-intro reveal">Non ti diciamo ancora niente. Prima esplora, poi la spiegazione arriverà da sola.</p>
 
-    <!-- ATTIVITÀ 1: traiettoria -->
     <div class="activity reveal">
       <div class="activity-num">Attività 1 · Lancia!</div>
       <h3>Lancia la palla</h3>
       <p>Cambia angolo e forza. Osserva la traccia che rimane nell'aria. Che forma ha?</p>
-
       <div class="slider-row">
         <label>Angolo di lancio</label>
         <input type="range" id="angleSlider" min="10" max="80" value="45">
@@ -391,825 +479,502 @@
         <input type="range" id="forceSlider" min="20" max="100" value="60">
         <span class="val-badge" id="forceVal">60</span>
       </div>
-
-      <canvas id="throwCanvas" class="interact" width="740" height="300"></canvas>
+      <canvas id="throwCanvas" class="interact" width="780" height="300"></canvas>
       <div class="btn-row">
-        <button onclick="launchBall()">🚀 Lancia</button>
-        <button class="secondary" onclick="clearThrow()">Cancella</button>
+        <button class="btn-primary" onclick="launchBall()">🚀 Lancia</button>
+        <button class="btn-secondary" onclick="clearThrow()">Cancella tracce</button>
       </div>
     </div>
 
-    <!-- ATTIVITÀ 2: riflettore -->
     <div class="activity reveal">
       <div class="activity-num">Attività 2 · Riflettore</div>
       <h3>L'antenna e i raggi</h3>
-      <p>Muovi il cursore per cambiare la profondità della "scodella". Nota dove vanno a finire tutti i raggi paralleli che arrivano dall'alto.</p>
-
+      <p>Muovi il cursore per cambiare la profondità della "scodella". Nota dove convergono tutti i raggi paralleli che arrivano dall'alto.</p>
       <div class="slider-row">
         <label>Profondità antenna</label>
         <input type="range" id="depthSlider" min="20" max="120" value="60">
         <span class="val-badge" id="depthVal">60</span>
       </div>
-      <canvas id="reflectorCanvas" class="interact" width="740" height="340" style="cursor:default"></canvas>
-      <p style="font-size:.88rem;color:var(--accent3);margin-top:12px">💡 Osservazione: tutti i raggi si incontrano nello stesso punto. Quel punto si chiama <strong>fuoco</strong>.</p>
+      <canvas id="reflectorCanvas" class="interact" width="780" height="340" style="cursor:default"></canvas>
+      <p style="font-size:.88rem;color:var(--green);margin-top:12px;font-weight:600">
+        💡 Tutti i raggi si incontrano nello stesso punto. Quel punto si chiama <strong>fuoco</strong>.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     SECTION 3 – SCOPRI (attività 3 & 4)
-════════════════════════════════════════ -->
-<section id="discover">
+<!-- ═══════════════════════════════
+     SCOPRI – attività 3 & 4
+═══════════════════════════════ -->
+<section class="section section-mid" id="discover">
   <div class="container">
-    <p class="sec-label reveal">Attività 3 & 4</p>
-    <h2 class="reveal">Costruisci la curva<br>dal nulla</h2>
-    <p class="sec-intro reveal">Stai per scoprire tu stesso qual è la regola segreta che genera questa forma.</p>
+    <p class="section-label reveal">Attività 3 &amp; 4</p>
+    <h2 class="section-title light reveal">Costruisci la curva<br>dal nulla</h2>
+    <p class="section-intro light reveal">Stai per scoprire tu stesso qual è la regola segreta che genera questa forma.</p>
 
-    <!-- ATTIVITÀ 3: disegna punti equidistanti -->
-    <div class="activity reveal">
+    <div class="activity-dark reveal">
       <div class="activity-num">Attività 3 · Caccia al punto</div>
       <h3>Trova i punti "giusti"</h3>
       <p>
-        Nel piano qui sotto c'è un punto colorato <span style="color:var(--accent2);font-weight:700">F</span> (fuoco) e una linea orizzontale
-        <span style="color:var(--accent3);font-weight:700">d</span> (direttrice).
+        Nel piano c'è un punto <span style="color:var(--primary);font-weight:700">F</span> (fuoco) e una linea
+        <span style="color:var(--green);font-weight:700">d</span> (direttrice).
         <br><br>
-        Il tuo compito: <strong>clicca</strong> sui punti del piano che sembrano
-        <em>equidistanti</em> <span class="tip">?<span class="tip-text">Equidistante = alla stessa distanza da due cose diverse</span></span>
-        sia da F che dalla linea d.
+        Clicca sui punti che ti sembrano <strong style="color:#fff">equidistanti</strong>
+        <span class="tip">?<span class="tip-text">Equidistante = alla stessa distanza da due cose diverse</span></span>
+        sia da F che dalla retta d.
       </p>
-      <canvas id="equiCanvas" class="interact" width="740" height="380"></canvas>
-      <div id="equiMsg" class="msg"></div>
+      <canvas id="equiCanvas" class="interact" width="780" height="380"></canvas>
+      <div id="equiMsg" class="msg info" style="display:none"></div>
       <div class="btn-row">
-        <button onclick="revealParabola()">👁 Rivela la curva</button>
-        <button class="secondary" onclick="resetEqui()">Ricomincia</button>
+        <button class="btn-primary" onclick="revealParabola()">👁 Rivela la curva</button>
+        <button class="btn-secondary" onclick="resetEqui()">Ricomincia</button>
       </div>
     </div>
 
-    <!-- ATTIVITÀ 4: distanze animate -->
-    <div class="activity reveal">
+    <div class="activity-dark reveal">
       <div class="activity-num">Attività 4 · Misura le distanze</div>
       <h3>Muovi il punto sulla curva</h3>
-      <p>Trascina il punto <span style="color:var(--accent2);font-weight:700">P</span> lungo la curva rossa. Osserva le due distanze: quella dal fuoco F e quella dalla direttrice. Noti qualcosa?</p>
-      <canvas id="distCanvas" class="interact" width="740" height="340" style="cursor:grab"></canvas>
-      <div id="distInfo" style="display:flex;gap:24px;margin-top:12px;flex-wrap:wrap">
-        <div style="background:rgba(124,106,245,0.12);border:1px solid rgba(124,106,245,0.3);border-radius:10px;padding:12px 20px;flex:1;min-width:150px">
-          <div style="font-size:.8rem;color:var(--muted)">Distanza da F</div>
-          <div id="dF" style="font-size:1.4rem;font-weight:700;color:var(--accent)">—</div>
+      <p>Trascina il punto <span style="color:var(--primary);font-weight:700">P</span> lungo la curva rossa. Osserva le due distanze. Noti qualcosa?</p>
+      <canvas id="distCanvas" class="interact" width="780" height="340" style="cursor:grab"></canvas>
+      <div class="dist-stats">
+        <div class="stat-box">
+          <div class="stat-label">Distanza da F</div>
+          <div class="stat-val" id="dF">—</div>
         </div>
-        <div style="background:rgba(78,205,196,0.1);border:1px solid rgba(78,205,196,0.3);border-radius:10px;padding:12px 20px;flex:1;min-width:150px">
-          <div style="font-size:.8rem;color:var(--muted)">Distanza da d</div>
-          <div id="dD" style="font-size:1.4rem;font-weight:700;color:var(--accent3)">—</div>
+        <div class="stat-box green">
+          <div class="stat-label">Distanza da d</div>
+          <div class="stat-val" id="dD">—</div>
         </div>
-        <div style="background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);border-radius:10px;padding:12px 20px;flex:1;min-width:150px">
-          <div style="font-size:.8rem;color:var(--muted)">Differenza</div>
-          <div id="dDiff" style="font-size:1.4rem;font-weight:700;color:var(--accent2)">—</div>
+        <div class="stat-box magenta">
+          <div class="stat-label">Differenza</div>
+          <div class="stat-val" id="dDiff">—</div>
         </div>
       </div>
-      <div id="distMsg" class="msg" style="display:block;margin-top:16px">
-        🎯 Trascina P sul canvas qui sopra!
-      </div>
+      <div id="distMsg" class="msg info">↔ Trascina P sul canvas qui sopra!</div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     SECTION 4 – DEFINIZIONE
-════════════════════════════════════════ -->
-<section id="definition">
+<!-- ═══════════════════════════════
+     DEFINIZIONE
+═══════════════════════════════ -->
+<section class="section section-dark" id="definition">
   <div class="container">
-    <p class="sec-label reveal">La risposta</p>
-    <h2 class="reveal">Ora puoi dirlo tu stesso:<br>cos'è una parabola?</h2>
-    <p class="sec-intro reveal">Nelle attività precedenti l'hai già scoperto. Eccola, finalmente, con le parole della matematica.</p>
+    <p class="section-label reveal">La risposta</p>
+    <h2 class="section-title light reveal">Ora puoi dirlo tu stesso:<br>cos'è una parabola?</h2>
+    <p class="section-intro light reveal">Nelle attività precedenti l'hai già scoperto. Eccola, finalmente, con le parole della matematica.</p>
 
     <div class="def-box reveal">
       <p class="big-def">
         Una <em>parabola</em> è l'insieme di tutti i punti del piano che sono
-        <em>equidistanti</em> da un punto fisso chiamato <span class="keyword">fuoco (F)</span>
-        e da una retta fissa chiamata <span class="keyword">direttrice (d)</span>.
+        <em>equidistanti</em> da un punto fisso chiamato <span class="kw">fuoco (F)</span>
+        e da una retta fissa chiamata <span class="kw">direttrice (d)</span>.
         <br><br>
-        Cioè: per ogni punto P sulla parabola, vale sempre
-        <br>
-        <span style="font-size:1.5rem;font-family:monospace;color:var(--accent2)">dist(P, F) = dist(P, d)</span>
+        Per ogni punto P sulla parabola vale sempre:
       </p>
+      <div class="def-formula">dist(P, F) = dist(P, d)</div>
     </div>
 
     <div class="formula-row reveal">
       <div class="formula-card">
         <div class="formula">y = ax²</div>
-        <small>Forma base, asse di simmetria verticale, vertice nell'origine</small>
+        <small>Forma base — asse verticale, vertice nell'origine</small>
       </div>
       <div class="formula-card">
         <div class="formula">y = ax²+bx+c</div>
-        <small>Forma generale: a determina apertura, vertice in –b/2a</small>
+        <small>Forma generale — a determina apertura e direzione</small>
       </div>
       <div class="formula-card">
         <div class="formula">x = ay²</div>
-        <small>Asse orizzontale: si apre a destra o sinistra</small>
+        <small>Asse orizzontale — si apre a destra o sinistra</small>
       </div>
     </div>
 
-    <!-- Final interactive: vertex form -->
-    <div class="activity reveal" style="margin-top:32px">
-      <div class="activity-num">Bonus · Gioca con i parametri</div>
-      <h3>Cambia la forma della parabola</h3>
-      <p>Ora che sai cos'è, esplora come a, b, c cambiano la curva.</p>
-
+    <div class="activity-dark reveal" style="margin-top:36px">
+      <div class="activity-num">Bonus · Parametri</div>
+      <h3>Gioca con a, b, c</h3>
+      <p>Ora che sai cos'è una parabola, esplora come i coefficienti cambiano la curva.</p>
       <div class="slider-row">
-        <label>a (apertura)</label>
+        <label style="color:rgba(255,255,255,.6)">a (apertura)</label>
         <input type="range" id="aSlider" min="-30" max="30" value="10" step="1">
         <span class="val-badge" id="aVal">1.0</span>
       </div>
       <div class="slider-row">
-        <label>b (posizione)</label>
+        <label style="color:rgba(255,255,255,.6)">b (posizione)</label>
         <input type="range" id="bSlider" min="-50" max="50" value="0">
         <span class="val-badge" id="bVal">0</span>
       </div>
       <div class="slider-row">
-        <label>c (traslazione)</label>
+        <label style="color:rgba(255,255,255,.6)">c (traslazione)</label>
         <input type="range" id="cSlider" min="-80" max="80" value="0">
         <span class="val-badge" id="cVal">0</span>
       </div>
-      <canvas id="formulaCanvas" class="interact" width="740" height="320" style="cursor:default"></canvas>
-      <div id="formulaLabel" style="text-align:center;margin-top:10px;font-family:monospace;font-size:1rem;color:var(--accent2)"></div>
+      <canvas id="formulaCanvas" class="interact" width="780" height="320" style="cursor:default"></canvas>
+      <div id="formulaLabel" style="text-align:center;margin-top:10px;font-family:var(--mono);font-size:1rem;color:var(--primary);font-weight:700"></div>
     </div>
 
-    <div class="confetti-banner reveal">
+    <div class="congrats reveal">
       <h3>🎉 Hai scoperto la parabola!</h3>
       <p>Sei partito da un ponte e un'antenna. Hai lanciato palline, hai misurato distanze. E adesso sai cosa unifica tutto: la regola del fuoco e della direttrice.</p>
     </div>
   </div>
 </section>
 
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="logo-wrap" style="justify-content:center;margin-bottom:8px">
+    <span class="logo-icon">🌐</span>
+    <span class="logo-text">Fosforo<strong>Scienza</strong></span>
+  </div>
+  <p class="footer-tagline">La Festa della Scienza</p>
+  <p style="margin-top:12px">Modulo interattivo · La Parabola</p>
+</footer>
+
 <script>
-// ══════════════════════════════════════════════════════
-//  UTILS
-// ══════════════════════════════════════════════════════
 const $ = id => document.getElementById(id);
 const PI = Math.PI;
+const PRIMARY = '#41B7FF';
+const ACCENT  = '#CC0066';
+const GREEN   = '#18b48c';
+const BG_DARK = '#0a1929';
 
 function lerp(a,b,t){ return a+(b-a)*t; }
 
-// ══════════════════════════════════════════════════════
-//  PROGRESS + NAV
-// ══════════════════════════════════════════════════════
-const sections = ['hero','world','explore','discover','definition'];
-const sectionEls = sections.map(id => document.getElementById(id));
-
-function scrollToSec(i){ sectionEls[i].scrollIntoView({behavior:'smooth'}); }
+// ── PROGRESS + NAV ──
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = ['hero','world','explore','discover','definition'].map(id=>$(id));
 
 window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const total    = document.body.scrollHeight - window.innerHeight;
-  $('progressBar').style.width = (scrolled/total*100)+'%';
-
-  // nav active
-  let cur = 0;
-  sectionEls.forEach((el,i)=>{
-    if(scrolled >= el.offsetTop - window.innerHeight/2) cur = i;
-  });
-  document.querySelectorAll('.nav-dot,.nav-label').forEach(el=>{
-    el.classList.toggle('active', +el.dataset.sec === cur);
-  });
-
-  // reveal
+  const s=window.scrollY, total=document.body.scrollHeight-window.innerHeight;
+  $('progressBar').style.width=(s/total*100)+'%';
+  let cur=0;
+  sections.forEach((el,i)=>{ if(s>=el.offsetTop-window.innerHeight/2) cur=i; });
+  navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+sections[cur]?.id));
   document.querySelectorAll('.reveal').forEach(el=>{
-    const r = el.getBoundingClientRect();
-    if(r.top < window.innerHeight*0.88) el.classList.add('visible');
+    if(el.getBoundingClientRect().top<window.innerHeight*.88) el.classList.add('visible');
   });
 });
 window.dispatchEvent(new Event('scroll'));
 
-// ══════════════════════════════════════════════════════
-//  WORLD CANVAS – 3 scene animation
-// ══════════════════════════════════════════════════════
+// ── HERO CANVAS – rete di punti stile Fosforo ──
 (function(){
-  const canvas = $('worldCanvas');
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  function drawScene(){
-    const W = canvas.width, H = canvas.height;
+  const canvas=$('hero-canvas'), ctx=canvas.getContext('2d');
+  let W,H,nodes=[],t=0;
+  function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+  window.addEventListener('resize',resize); resize();
+  for(let i=0;i<40;i++) nodes.push({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.0003,vy:(Math.random()-.5)*.0003});
+  function draw(){
     ctx.clearRect(0,0,W,H);
-
-    // background gradient
-    const bg = ctx.createLinearGradient(0,0,0,H);
-    bg.addColorStop(0,'#12122a'); bg.addColorStop(1,'#0d0d1e');
-    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
-
-    const pw = W/3;
-
-    // ── PANEL 1: traiettoria ──
-    ctx.save(); ctx.rect(0,0,pw,H); ctx.clip();
-    drawTrajectoryScene(ctx, 0, pw, H, t);
-    ctx.restore();
-
-    // divider
-    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-    ctx.beginPath(); ctx.moveTo(pw,10); ctx.lineTo(pw,H-10); ctx.stroke();
-
-    // ── PANEL 2: ponte ──
-    ctx.save(); ctx.rect(pw,0,pw,H); ctx.clip();
-    drawBridgeScene(ctx, pw, pw, H, t);
-    ctx.restore();
-
-    ctx.beginPath(); ctx.moveTo(pw*2,10); ctx.lineTo(pw*2,H-10); ctx.stroke();
-
-    // ── PANEL 3: riflettore ──
-    ctx.save(); ctx.rect(pw*2,0,pw,H); ctx.clip();
-    drawReflectorScene(ctx, pw*2, pw, H, t);
-    ctx.restore();
-
-    t += 0.016;
-    requestAnimationFrame(drawScene);
-  }
-
-  function drawTrajectoryScene(ctx, ox, w, h, t){
-    ctx.fillStyle='rgba(78,205,196,0.08)';ctx.fillRect(ox,0,w,h);
-    // label
-    ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 12px sans-serif';
-    ctx.textAlign='center'; ctx.fillText('⚽ Traiettoria', ox+w/2, 20);
-    // ground
-    const gY = h-40;
-    ctx.strokeStyle='rgba(255,255,255,0.15)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(ox+10,gY); ctx.lineTo(ox+w-10,gY); ctx.stroke();
-
-    const speed=0.5, tmod = (t*speed)%3.5;
-    const g=9.8, v0=55, ang=50*PI/180;
-    const vx=v0*Math.cos(ang), vy=v0*Math.sin(ang);
-    const scale=0.9;
-    const startX=ox+18;
-
-    // trace
-    ctx.beginPath(); ctx.strokeStyle='rgba(78,205,196,0.4)'; ctx.lineWidth=2;
-    for(let s=0;s<=tmod;s+=0.04){
-      const px = startX + vx*s*scale;
-      const py = gY - (vy*s - 0.5*g*s*s)*scale;
-      if(py>gY) break;
-      s===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
-    }
-    ctx.stroke();
-
-    // ball
-    const bx = startX + vx*tmod*scale;
-    const by = gY - (vy*tmod - 0.5*g*tmod*tmod)*scale;
-    if(by<=gY){
-      ctx.beginPath(); ctx.arc(bx,by,8,0,PI*2);
-      ctx.fillStyle='#4ecdc4'; ctx.fill();
-      ctx.beginPath(); ctx.arc(bx-2,by-2,2,0,PI*2);
-      ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.fill();
-    }
-  }
-
-  function drawBridgeScene(ctx, ox, w, h, t){
-    ctx.fillStyle='rgba(124,106,245,0.06)';ctx.fillRect(ox,0,w,h);
-    ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 12px sans-serif';
-    ctx.textAlign='center'; ctx.fillText('🌉 Ponte sospeso', ox+w/2, 20);
-
-    const gY=h-35, towerH=90, pad=30;
-    // road
-    ctx.fillStyle='rgba(255,255,255,0.08)';
-    ctx.fillRect(ox+pad,gY,w-pad*2,8);
-    // towers
-    const t1x=ox+pad+15, t2x=ox+w-pad-15;
-    ctx.fillStyle='rgba(200,200,255,0.4)';
-    ctx.fillRect(t1x-4,gY-towerH,8,towerH);
-    ctx.fillRect(t2x-4,gY-towerH,8,towerH);
-
-    // cable (parabola)
-    ctx.beginPath(); ctx.strokeStyle='#7c6af5'; ctx.lineWidth=3;
-    const midX=(t1x+t2x)/2, low=gY-20, high=gY-towerH+10;
-    for(let x=t1x;x<=t2x;x+=2){
-      const frac=(x-midX)/(t2x-midX);
-      const y=low+(high-low)*frac*frac;
-      x===t1x?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    }
-    ctx.stroke();
-
-    // suspenders with wave
-    ctx.strokeStyle='rgba(124,106,245,0.4)'; ctx.lineWidth=1;
-    for(let i=1;i<=7;i++){
-      const frac=i/8;
-      const cx=t1x+(t2x-t1x)*frac;
-      const f2=(frac-0.5)/(0.5);
-      const cy=low+(high-low)*f2*f2;
-      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx,gY); ctx.stroke();
-    }
-  }
-
-  function drawReflectorScene(ctx, ox, w, h, t){
-    ctx.fillStyle='rgba(245,166,35,0.05)';ctx.fillRect(ox,0,w,h);
-    ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='bold 12px sans-serif';
-    ctx.textAlign='center'; ctx.fillText('📡 Riflettore', ox+w/2, 20);
-
-    const cx=ox+w/2, cy=h-40, focal=55, depth=50, ww=90;
-    // draw parabola dish
-    ctx.beginPath(); ctx.strokeStyle='rgba(245,166,35,0.7)'; ctx.lineWidth=3;
-    for(let x=-ww;x<=ww;x+=2){
-      const y=cy - x*x/(4*depth*0.6);
-      x===-ww?ctx.moveTo(cx+x,y):ctx.lineTo(cx+x,y);
-    }
-    ctx.stroke();
-
-    // focus point
-    const focY=cy-focal*0.7;
-    const pulse=0.7+0.3*Math.sin(t*4);
-    ctx.beginPath(); ctx.arc(cx,focY,7*pulse,0,PI*2);
-    ctx.fillStyle='rgba(245,166,35,0.9)'; ctx.fill();
-    ctx.fillStyle='rgba(255,255,255,0.8)'; ctx.font='bold 11px sans-serif';
-    ctx.textAlign='center'; ctx.fillText('F',cx,focY+4);
-
-    // rays
-    for(let i=-3;i<=3;i++){
-      const rx=cx+i*22;
-      // ray from top to dish
-      const dy=cy - rx*rx/(4*depth*0.6*cx*cx)*((rx-cx)*(rx-cx));
-      const relX=rx-cx;
-      const hitY=cy - relX*relX/(4*depth*0.6);
-      // incoming
-      const animT=(t*0.6+i*0.25)%1;
-      const ry=lerp(30,hitY,animT);
-      ctx.strokeStyle=`rgba(255,220,100,${0.5*(1-Math.abs(i)*0.1)})`;
-      ctx.lineWidth=1.5;
-      ctx.beginPath(); ctx.moveTo(rx,30); ctx.lineTo(rx,ry); ctx.stroke();
-      // reflected (only when near dish)
-      if(animT>0.7){
-        const seg=(animT-0.7)/0.3;
-        const ex=lerp(rx,cx,seg);
-        const ey=lerp(hitY,focY,seg);
-        ctx.strokeStyle=`rgba(255,180,50,${seg*0.8})`;
-        ctx.beginPath(); ctx.moveTo(rx,hitY); ctx.lineTo(ex,ey); ctx.stroke();
+    nodes.forEach(n=>{ n.x=(n.x+n.vx+1)%1; n.y=(n.y+n.vy+1)%1; });
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=(nodes[i].x-nodes[j].x)*W, dy=(nodes[i].y-nodes[j].y)*H, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<160){
+          ctx.strokeStyle=`rgba(65,183,255,${(1-d/160)*.25})`; ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(nodes[i].x*W,nodes[i].y*H);ctx.lineTo(nodes[j].x*W,nodes[j].y*H);ctx.stroke();
+        }
       }
+      ctx.beginPath();ctx.arc(nodes[i].x*W,nodes[i].y*H,2,0,PI*2);
+      ctx.fillStyle='rgba(65,183,255,0.3)'; ctx.fill();
     }
+    t+=0.012; requestAnimationFrame(draw);
   }
-
-  drawScene();
+  draw();
 })();
 
-// ══════════════════════════════════════════════════════
-//  ATTIVITÀ 1 – LANCIA
-// ══════════════════════════════════════════════════════
+// ── WORLD CANVAS – 3 scene ──
 (function(){
-  const canvas = $('throwCanvas');
-  const ctx = canvas.getContext('2d');
-  let traces = [], animId = null;
-
-  function getScale(){
-    return canvas.width / canvas.offsetWidth || 1;
+  const canvas=$('worldCanvas'), ctx=canvas.getContext('2d');
+  let t=0;
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#071e34'; ctx.fillRect(0,0,W,H);
+    const pw=W/3;
+    ctx.save();ctx.rect(0,0,pw,H);ctx.clip();drawTraj(ctx,0,pw,H,t);ctx.restore();
+    ctx.strokeStyle='rgba(65,183,255,0.1)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(pw,8);ctx.lineTo(pw,H-8);ctx.stroke();
+    ctx.save();ctx.rect(pw,0,pw,H);ctx.clip();drawBridge(ctx,pw,pw,H,t);ctx.restore();
+    ctx.beginPath();ctx.moveTo(pw*2,8);ctx.lineTo(pw*2,H-8);ctx.stroke();
+    ctx.save();ctx.rect(pw*2,0,pw,H);ctx.clip();drawReflector(ctx,pw*2,pw,H,t);ctx.restore();
+    t+=0.016; requestAnimationFrame(draw);
   }
-
-  function drawBase(){
-    const W=canvas.width, H=canvas.height;
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#12122a'; ctx.fillRect(0,0,W,H);
-    // grid
-    ctx.strokeStyle='rgba(255,255,255,0.04)'; ctx.lineWidth=1;
-    for(let x=0;x<W;x+=40){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
-    for(let y=0;y<H;y+=40){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
-    // ground
-    ctx.strokeStyle='rgba(255,255,255,0.2)'; ctx.lineWidth=2;
-    ctx.beginPath(); ctx.moveTo(20,H-30); ctx.lineTo(W-20,H-30); ctx.stroke();
+  function drawTraj(ctx,ox,w,h,t){
+    ctx.fillStyle='rgba(65,183,255,0.03)';ctx.fillRect(ox,0,w,h);
+    ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
+    ctx.fillText('⚽ Traiettoria',ox+w/2,18);
+    const gY=h-35,v0=54,ang=50*PI/180,g=9.8,sc=0.88,vx=v0*Math.cos(ang),vy=v0*Math.sin(ang);
+    ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(ox+10,gY);ctx.lineTo(ox+w-10,gY);ctx.stroke();
+    const tmod=(t*.45)%3.8, sx=ox+16;
+    ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.55)';ctx.lineWidth=2;
+    for(let s=0;s<=tmod;s+=0.04){
+      const px=sx+vx*s*sc,py=gY-(vy*s-.5*g*s*s)*sc;
+      if(py>gY)break; s===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.stroke();
+    const bx=sx+vx*tmod*sc,by=gY-(vy*tmod-.5*g*tmod*tmod)*sc;
+    if(by<=gY){
+      ctx.beginPath();ctx.arc(bx,by,8,0,PI*2);ctx.fillStyle=PRIMARY;ctx.fill();
+      ctx.beginPath();ctx.arc(bx-2,by-2,2,0,PI*2);ctx.fillStyle='rgba(255,255,255,.7)';ctx.fill();
+    }
   }
-
-  function drawTraces(){
-    const colors=['#7c6af5','#4ecdc4','#f5a623','#ff6b6b','#a8ff78','#ffd6e0'];
-    traces.forEach((pts,i)=>{
-      ctx.beginPath();
-      ctx.strokeStyle=colors[i%colors.length];
-      ctx.lineWidth=2.5;
-      pts.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
-      ctx.stroke();
-    });
+  function drawBridge(ctx,ox,w,h,t){
+    ctx.fillStyle='rgba(204,0,102,0.03)';ctx.fillRect(ox,0,w,h);
+    ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
+    ctx.fillText('🌉 Ponte sospeso',ox+w/2,18);
+    const gY=h-35,tH=85,pad=28,t1x=ox+pad+12,t2x=ox+w-pad-12;
+    ctx.fillStyle='rgba(200,200,255,0.3)';
+    ctx.fillRect(t1x-4,gY-tH,8,tH);ctx.fillRect(t2x-4,gY-tH,8,tH);
+    ctx.fillStyle='rgba(255,255,255,0.08)';ctx.fillRect(ox+pad,gY,w-pad*2,7);
+    ctx.beginPath();ctx.strokeStyle=PRIMARY;ctx.lineWidth=3;
+    const mid=(t1x+t2x)/2,low=gY-18,high=gY-tH+8;
+    for(let x=t1x;x<=t2x;x+=2){const f=(x-mid)/(t2x-mid),y=low+(high-low)*f*f;x===t1x?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+    ctx.stroke();
+    ctx.strokeStyle='rgba(65,183,255,0.35)';ctx.lineWidth=1;
+    for(let i=1;i<=7;i++){const fr=i/8,cx2=t1x+(t2x-t1x)*fr,f2=(fr-.5)/.5,cy=low+(high-low)*f2*f2;ctx.beginPath();ctx.moveTo(cx2,cy);ctx.lineTo(cx2,gY);ctx.stroke();}
   }
+  function drawReflector(ctx,ox,w,h,t){
+    ctx.fillStyle='rgba(24,180,140,0.03)';ctx.fillRect(ox,0,w,h);
+    ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';
+    ctx.fillText('📡 Riflettore',ox+w/2,18);
+    const cx=ox+w/2,cy=h-38,dep=52,ww=88,a=dep/(ww*ww),focY=cy-dep;
+    ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.85)';ctx.lineWidth=3;
+    for(let x=-ww;x<=ww;x+=2){const y=cy-a*x*x;x===-ww?ctx.moveTo(cx+x,y):ctx.lineTo(cx+x,y);}
+    ctx.stroke();
+    const pulse=0.75+0.25*Math.sin(t*4.5);
+    const fg=ctx.createRadialGradient(cx,focY,0,cx,focY,8*pulse);
+    fg.addColorStop(0,'#fff');fg.addColorStop(1,'rgba(65,183,255,0)');
+    ctx.beginPath();ctx.arc(cx,focY,8*pulse,0,PI*2);ctx.fillStyle=fg;ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.85)';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.fillText('F',cx,focY+16);
+    for(let i=-3;i<=3;i++){
+      const rx=cx+i*21,hitY=cy-a*(rx-cx)**2;if(hitY<18)continue;
+      const at=((t*.55+i*.22)%1);
+      ctx.strokeStyle='rgba(65,183,255,0.5)';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(rx,0);ctx.lineTo(rx,lerp(0,hitY,at));ctx.stroke();
+      if(at>.65){const seg=(at-.65)/.35;ctx.strokeStyle=`rgba(65,183,255,${seg*.8})`;ctx.beginPath();ctx.moveTo(rx,hitY);ctx.lineTo(lerp(rx,cx,seg),lerp(hitY,focY,seg));ctx.stroke();}
+    }
+  }
+  draw();
+})();
 
-  window.launchBall = function(){
-    if(animId) cancelAnimationFrame(animId);
-    const angle = +$('angleSlider').value * PI/180;
-    const force = +$('forceSlider').value;
-    const gY = canvas.height-30;
-    const v0 = force * 0.9;
-    const vx = v0*Math.cos(angle), vy = v0*Math.sin(angle);
-    const g=9.8, scale=0.35;
-    const pts = [];
-    let s = 0;
+// ── ATTIVITÀ 1 – LANCIA ──
+(function(){
+  const canvas=$('throwCanvas'),ctx=canvas.getContext('2d');
+  const COLORS=[PRIMARY,ACCENT,GREEN,'#f5a623','#a78bfa','#fb7185'];
+  let traces=[],animId=null;
+  function base(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(65,183,255,0.06)';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    ctx.strokeStyle='rgba(65,183,255,0.25)';ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(20,H-30);ctx.lineTo(W-20,H-30);ctx.stroke();
+    traces.forEach((pts,i)=>{ctx.beginPath();ctx.strokeStyle=COLORS[i%COLORS.length];ctx.lineWidth=2.5;pts.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));ctx.stroke();});
+  }
+  window.launchBall=function(){
+    if(animId)cancelAnimationFrame(animId);
+    const angle=+$('angleSlider').value*PI/180,force=+$('forceSlider').value;
+    const gY=canvas.height-30,v0=force*.9,vx=v0*Math.cos(angle),vy=v0*Math.sin(angle),g=9.8,sc=0.35;
+    const pts=[];let s=0;
     function step(){
-      const px = 40 + vx*s*scale;
-      const py = gY - (vy*s - 0.5*g*s*s)*scale;
-      if(px < canvas.width-10 && py < gY+5){
-        pts.push({x:px,y:py});
-        drawBase(); drawTraces();
-        ctx.beginPath(); ctx.arc(px,py,9,0,PI*2);
-        ctx.fillStyle='#f5a623'; ctx.fill();
-        ctx.beginPath(); ctx.arc(px-2,py-2,2.5,0,PI*2);
-        ctx.fillStyle='rgba(255,255,255,0.7)'; ctx.fill();
-        s+=0.12;
-        animId=requestAnimationFrame(step);
-      } else {
-        traces.push(pts);
-        if(traces.length>5) traces.shift();
-        drawBase(); drawTraces();
-      }
+      const px=40+vx*s*sc,py=gY-(vy*s-.5*g*s*s)*sc;
+      if(px<canvas.width-10&&py<gY+5){
+        pts.push({x:px,y:py});base();
+        ctx.beginPath();ctx.arc(px,py,9,0,PI*2);ctx.fillStyle=COLORS[traces.length%COLORS.length];ctx.fill();
+        ctx.beginPath();ctx.arc(px-2,py-2,2.5,0,PI*2);ctx.fillStyle='rgba(255,255,255,.7)';ctx.fill();
+        s+=0.12;animId=requestAnimationFrame(step);
+      } else {traces.push(pts);if(traces.length>5)traces.shift();base();}
     }
     step();
   };
-
-  window.clearThrow = function(){ traces=[]; drawBase(); };
-
-  $('angleSlider').oninput=()=>{ $('angleVal').textContent=$('angleSlider').value+'°'; };
-  $('forceSlider').oninput=()=>{ $('forceVal').textContent=$('forceSlider').value; };
-
-  drawBase();
-  window.launchBall();
+  window.clearThrow=function(){traces=[];base();};
+  $('angleSlider').oninput=()=>{$('angleVal').textContent=$('angleSlider').value+'°';};
+  $('forceSlider').oninput=()=>{$('forceVal').textContent=$('forceSlider').value;};
+  base();window.launchBall();
 })();
 
-// ══════════════════════════════════════════════════════
-//  ATTIVITÀ 2 – RIFLETTORE
-// ══════════════════════════════════════════════════════
+// ── ATTIVITÀ 2 – RIFLETTORE ──
 (function(){
-  const canvas = $('reflectorCanvas');
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  $('depthSlider').oninput=()=>{ $('depthVal').textContent=$('depthSlider').value; };
-
+  const canvas=$('reflectorCanvas'),ctx=canvas.getContext('2d');
+  let t=0;
+  $('depthSlider').oninput=()=>{$('depthVal').textContent=$('depthSlider').value;};
   function draw(){
-    const W=canvas.width, H=canvas.height;
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#12122a'; ctx.fillRect(0,0,W,H);
-
-    const depth = +$('depthSlider').value;
-    const cx=W/2, cy=H-40, ww=140;
-    const a=depth/(ww*ww);
-    const focY = cy - depth;
-
-    // dish
-    ctx.beginPath(); ctx.strokeStyle='rgba(245,166,35,0.8)'; ctx.lineWidth=4;
-    for(let x=-ww;x<=ww;x+=2){
-      const y = cy - a*x*x;
-      x===-ww ? ctx.moveTo(cx+x,y) : ctx.lineTo(cx+x,y);
-    }
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(65,183,255,0.05)';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    const dep=+$('depthSlider').value,cx=W/2,cy=H-40,ww=140,a=dep/(ww*ww),focY=cy-dep;
+    ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.9)';ctx.lineWidth=4;
+    for(let x=-ww;x<=ww;x+=2){const y=cy-a*x*x;x===-ww?ctx.moveTo(cx+x,y):ctx.lineTo(cx+x,y);}
     ctx.stroke();
-
-    // focal axis
-    ctx.strokeStyle='rgba(255,255,255,0.1)'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
-    ctx.beginPath(); ctx.moveTo(cx,0); ctx.lineTo(cx,H); ctx.stroke();
-    ctx.setLineDash([]);
-
-    // focus
+    ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.lineWidth=1;ctx.setLineDash([4,4]);
+    ctx.beginPath();ctx.moveTo(cx,0);ctx.lineTo(cx,H);ctx.stroke();ctx.setLineDash([]);
+    const dirY=cy+dep;
+    if(dirY<H){
+      ctx.strokeStyle='rgba(24,180,140,0.4)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+      ctx.beginPath();ctx.moveTo(20,dirY);ctx.lineTo(W-20,dirY);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle='rgba(24,180,140,0.7)';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText('d (direttrice)',cx,dirY-7);
+    }
     const pulse=0.8+0.2*Math.sin(t*5);
-    ctx.beginPath(); ctx.arc(cx,focY,10*pulse,0,PI*2);
-    const fg=ctx.createRadialGradient(cx,focY,0,cx,focY,10*pulse);
-    fg.addColorStop(0,'#fff'); fg.addColorStop(1,'rgba(245,166,35,0)');
-    ctx.fillStyle=fg; ctx.fill();
-    ctx.fillStyle='#fff'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('F',cx,focY+18);
-
-    // label direttrice equivalente
-    const dirY = cy + depth;
-    if(dirY < H){
-      ctx.strokeStyle='rgba(78,205,196,0.3)'; ctx.lineWidth=1; ctx.setLineDash([6,4]);
-      ctx.beginPath(); ctx.moveTo(20,dirY); ctx.lineTo(W-20,dirY); ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.fillStyle='rgba(78,205,196,0.6)'; ctx.font='11px sans-serif';
-      ctx.fillText('d (direttrice)',cx,dirY-6);
+    const glow=ctx.createRadialGradient(cx,focY,0,cx,focY,28*pulse);
+    glow.addColorStop(0,'rgba(65,183,255,0.4)');glow.addColorStop(1,'transparent');
+    ctx.fillStyle=glow;ctx.beginPath();ctx.arc(cx,focY,28*pulse,0,PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(cx,focY,9*pulse,0,PI*2);ctx.fillStyle='#fff';ctx.fill();
+    ctx.fillStyle=PRIMARY;ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('F',cx,focY+20);
+    const nr=9;
+    for(let i=0;i<nr;i++){
+      const fr=i/(nr-1),rx=cx-ww+fr*2*ww,hitY=cy-a*(rx-cx)**2;if(hitY<20)continue;
+      const at=((t*.5+i*.1)%1);
+      ctx.strokeStyle='rgba(65,183,255,0.5)';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(rx,0);ctx.lineTo(rx,lerp(0,hitY,at));ctx.stroke();
+      if(at>.6){const seg=(at-.6)/.4;ctx.strokeStyle=`rgba(65,183,255,${seg*.85})`;ctx.beginPath();ctx.moveTo(rx,hitY);ctx.lineTo(lerp(rx,cx,seg),lerp(hitY,focY,seg));ctx.stroke();}
     }
-
-    // rays
-    const numRays = 9;
-    for(let i=0;i<numRays;i++){
-      const frac = i/(numRays-1);
-      const rx = cx - ww + frac*2*ww;
-      const hitY = cy - a*(rx-cx)*(rx-cx);
-      if(hitY < 20) continue;
-
-      const animT = ((t*0.5 + i*0.11)%1);
-      const inY  = lerp(0,hitY,animT);
-
-      // incoming ray
-      ctx.strokeStyle=`rgba(255,220,60,0.55)`;
-      ctx.lineWidth=1.5;
-      ctx.beginPath(); ctx.moveTo(rx,0); ctx.lineTo(rx,inY); ctx.stroke();
-
-      // reflected
-      if(animT>0.6){
-        const seg=(animT-0.6)/0.4;
-        const ex=lerp(rx,cx,seg), ey=lerp(hitY,focY,seg);
-        ctx.strokeStyle=`rgba(255,160,30,${seg})`;
-        ctx.beginPath(); ctx.moveTo(rx,hitY); ctx.lineTo(ex,ey); ctx.stroke();
-      }
-    }
-
-    // focus glow
-    const glow=ctx.createRadialGradient(cx,focY,0,cx,focY,30);
-    glow.addColorStop(0,'rgba(255,220,60,0.35)');
-    glow.addColorStop(1,'transparent');
-    ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(cx,focY,30,0,PI*2); ctx.fill();
-
-    t += 0.018;
-    requestAnimationFrame(draw);
+    t+=0.018;requestAnimationFrame(draw);
   }
   draw();
 })();
 
-// ══════════════════════════════════════════════════════
-//  ATTIVITÀ 3 – EQUIDISTANZA
-// ══════════════════════════════════════════════════════
+// ── ATTIVITÀ 3 – EQUIDISTANZA ──
 (function(){
-  const canvas = $('equiCanvas');
-  const ctx = canvas.getContext('2d');
-  const W=canvas.width, H=canvas.height;
-
-  const focX=W/2, focY=H/2-40;
-  const dirY=H/2+60;
-  const tol=22;
-  let userPts=[], parabRevealed=false;
-
-  function ptDist(x,y){ return Math.sqrt((x-focX)**2+(y-focY)**2); }
-  function dirDist(y){ return Math.abs(y-dirY); }
-  function onParab(x,y){ return Math.abs(ptDist(x,y)-dirDist(y))<tol; }
-
+  const canvas=$('equiCanvas'),ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height,focX=W/2,focY=H/2-40,dirY=H/2+60,tol=22;
+  let userPts=[],revealed=false;
   function draw(){
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#12122a'; ctx.fillRect(0,0,W,H);
-    // grid
-    ctx.strokeStyle='rgba(255,255,255,0.04)'; ctx.lineWidth=1;
-    for(let x=0;x<W;x+=40){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
-    for(let y=0;y<H;y+=40){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
-
-    // direttrice
-    ctx.strokeStyle='rgba(78,205,196,0.7)'; ctx.lineWidth=2; ctx.setLineDash([6,4]);
-    ctx.beginPath(); ctx.moveTo(20,dirY); ctx.lineTo(W-20,dirY); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='rgba(78,205,196,0.8)'; ctx.font='bold 13px sans-serif'; ctx.textAlign='left';
-    ctx.fillText('d (direttrice)',26,dirY-8);
-
-    // fuoco
-    ctx.beginPath(); ctx.arc(focX,focY,10,0,PI*2);
-    ctx.fillStyle='rgba(245,166,35,0.9)'; ctx.fill();
-    ctx.fillStyle='#fff'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('F',focX,focY+18);
-
-    // parabola revealed
-    if(parabRevealed){
-      ctx.beginPath(); ctx.strokeStyle='rgba(124,106,245,0.7)'; ctx.lineWidth=3;
-      const p=Math.abs(focY-dirY)/2;
-      const vY=(focY+dirY)/2;
-      for(let x=20;x<W-20;x+=2){
-        const dx=x-focX;
-        const y=vY+dx*dx/(4*p)*(focY<dirY?1:-1);
-        x===20?ctx.moveTo(x,y):ctx.lineTo(x,y);
-      }
+    ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(65,183,255,0.05)';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    ctx.strokeStyle='rgba(24,180,140,0.7)';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(20,dirY);ctx.lineTo(W-20,dirY);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='rgba(24,180,140,0.8)';ctx.font='bold 12px sans-serif';ctx.textAlign='left';ctx.fillText('d (direttrice)',26,dirY-8);
+    ctx.beginPath();ctx.arc(focX,focY,9,0,PI*2);ctx.fillStyle=PRIMARY;ctx.fill();
+    ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('F',focX,focY+18);
+    if(revealed){
+      const p2=Math.abs(focY-dirY)/2,vY=(focY+dirY)/2;
+      ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.75)';ctx.lineWidth=3;
+      for(let x=20;x<W-20;x+=2){const dx=x-focX,y=vY+dx*dx/(4*p2)*(focY<dirY?1:-1);x===20?ctx.moveTo(x,y):ctx.lineTo(x,y);}
       ctx.stroke();
     }
-
-    // user points
     userPts.forEach(p=>{
-      const ok=onParab(p.x,p.y);
-      ctx.beginPath(); ctx.arc(p.x,p.y,8,0,PI*2);
-      ctx.fillStyle=ok?'rgba(78,205,196,0.85)':'rgba(255,100,100,0.7)';
-      ctx.fill();
-      ctx.strokeStyle='rgba(255,255,255,0.5)'; ctx.lineWidth=1.5; ctx.stroke();
+      const dF=Math.sqrt((p.x-focX)**2+(p.y-focY)**2),dD=Math.abs(p.y-dirY),ok=Math.abs(dF-dD)<tol;
       if(ok){
-        // dashed lines to F and dir
-        ctx.strokeStyle='rgba(78,205,196,0.3)'; ctx.setLineDash([3,3]);
+        ctx.strokeStyle='rgba(65,183,255,0.2)';ctx.lineWidth=1.5;ctx.setLineDash([3,3]);
         ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(focX,focY);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x,dirY);ctx.stroke();
-        ctx.setLineDash([]);
+        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x,dirY);ctx.stroke();ctx.setLineDash([]);
       }
+      ctx.beginPath();ctx.arc(p.x,p.y,8,0,PI*2);
+      ctx.fillStyle=ok?'rgba(65,183,255,0.85)':'rgba(204,0,102,0.75)';ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.lineWidth=1.5;ctx.stroke();
     });
-
-    // instruction
-    if(!parabRevealed){
-      ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.font='13px sans-serif'; ctx.textAlign='center';
-      ctx.fillText('Clicca dove pensi che dist(P,F) = dist(P,d)', W/2, H-14);
-    }
+    if(!revealed){ctx.fillStyle='rgba(255,255,255,0.22)';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText('Clicca dove pensi che dist(P,F) = dist(P,d)',W/2,H-14);}
   }
-
-  canvas.addEventListener('click', e=>{
-    const r=canvas.getBoundingClientRect();
-    const scl=canvas.width/r.width;
-    const x=(e.clientX-r.left)*scl, y=(e.clientY-r.top)*scl;
+  canvas.addEventListener('click',e=>{
+    const r=canvas.getBoundingClientRect(),sc=canvas.width/r.width;
+    const x=(e.clientX-r.left)*sc,y=(e.clientY-r.top)*sc;
     userPts.push({x,y});
-    const ok=onParab(x,y);
-    const msg=$('equiMsg');
-    msg.style.display='block';
-    if(ok){
-      msg.style.background='rgba(78,205,196,0.12)';
-      msg.style.borderColor='rgba(78,205,196,0.3)';
-      msg.style.color='var(--accent3)';
-      msg.textContent='✅ Bravo! Quel punto è davvero equidistante da F e da d!';
-    } else {
-      msg.style.background='rgba(255,100,100,0.1)';
-      msg.style.borderColor='rgba(255,100,100,0.3)';
-      msg.style.color='#ff8888';
-      msg.textContent='❌ Non proprio: le due distanze non sono uguali. Riprova!';
-    }
+    const dF=Math.sqrt((x-focX)**2+(y-focY)**2),dD=Math.abs(y-dirY),ok=Math.abs(dF-dD)<tol;
+    const m=$('equiMsg');m.className='msg '+(ok?'success':'error');
+    m.textContent=ok?'✅ Bravo! Quel punto è davvero equidistante da F e da d!':'❌ Non proprio: le due distanze non sono uguali. Riprova!';
     draw();
   });
-
-  window.revealParabola=()=>{ parabRevealed=true; draw(); };
-  window.resetEqui=()=>{ userPts=[]; parabRevealed=false; $('equiMsg').style.display='none'; draw(); };
-
+  window.revealParabola=()=>{revealed=true;draw();};
+  window.resetEqui=()=>{userPts=[];revealed=false;$('equiMsg').className='msg info';$('equiMsg').style.display='none';draw();};
   draw();
 })();
 
-// ══════════════════════════════════════════════════════
-//  ATTIVITÀ 4 – DISTANZE ANIMATE
-// ══════════════════════════════════════════════════════
+// ── ATTIVITÀ 4 – DISTANZE ──
 (function(){
-  const canvas = $('distCanvas');
-  const ctx = canvas.getContext('2d');
-  const W=canvas.width, H=canvas.height;
-
-  const focX=W/2, focY=H/2-50;
-  const dirY=H/2+50;
-  const p=Math.abs(focY-dirY)/2;
-  const vY=(focY+dirY)/2;
-
-  // P starts at vertex
-  let Px=focX, Py=vY;
-  let dragging=false;
-
-  function parabY(x){ return vY+(x-focX)**2/(4*p); }
-  function snapToCurve(x){
-    const cx=Math.max(20,Math.min(W-20,x));
-    return {x:cx, y:parabY(cx)};
-  }
-
+  const canvas=$('distCanvas'),ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height,focX=W/2,focY=H/2-50,dirY=H/2+50;
+  const p2=Math.abs(focY-dirY)/2,vY=(focY+dirY)/2;
+  let Px=focX,Py=vY,dragging=false;
+  function parabY(x){return vY+(x-focX)**2/(4*p2);}
+  function snap(x){const cx=Math.max(20,Math.min(W-20,x));return{x:cx,y:parabY(cx)};}
   function draw(){
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#12122a'; ctx.fillRect(0,0,W,H);
-    // grid
-    ctx.strokeStyle='rgba(255,255,255,0.04)'; ctx.lineWidth=1;
-    for(let x=0;x<W;x+=40){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
-    for(let y=0;y<H;y+=40){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
-
-    // directrix
-    ctx.strokeStyle='rgba(78,205,196,0.7)'; ctx.lineWidth=2; ctx.setLineDash([6,4]);
-    ctx.beginPath(); ctx.moveTo(20,dirY); ctx.lineTo(W-20,dirY); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='rgba(78,205,196,0.8)'; ctx.font='bold 12px sans-serif'; ctx.textAlign='left';
-    ctx.fillText('d',26,dirY-8);
-
-    // parabola
-    ctx.beginPath(); ctx.strokeStyle='rgba(255,100,130,0.85)'; ctx.lineWidth=3;
-    for(let x=20;x<W-20;x+=2){
-      const y=parabY(x);
-      x===20?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    }
+    ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(65,183,255,0.05)';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    ctx.strokeStyle='rgba(24,180,140,0.7)';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(20,dirY);ctx.lineTo(W-20,dirY);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='rgba(24,180,140,0.7)';ctx.font='bold 11px sans-serif';ctx.textAlign='left';ctx.fillText('d',26,dirY-8);
+    ctx.beginPath();ctx.strokeStyle='rgba(204,0,102,0.85)';ctx.lineWidth=3;
+    for(let x=20;x<W-20;x+=2){const y=parabY(x);x===20?ctx.moveTo(x,y):ctx.lineTo(x,y);}
     ctx.stroke();
-
-    // focus
-    ctx.beginPath(); ctx.arc(focX,focY,9,0,PI*2);
-    ctx.fillStyle='rgba(245,166,35,0.9)'; ctx.fill();
-    ctx.fillStyle='#fff'; ctx.font='bold 12px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('F',focX,focY+18);
-
-    // distances
-    const dF=Math.sqrt((Px-focX)**2+(Py-focY)**2);
-    const dD=Math.abs(Py-dirY);
-
-    // line P→F
-    ctx.strokeStyle='rgba(124,106,245,0.7)'; ctx.lineWidth=2.5; ctx.setLineDash([]);
-    ctx.beginPath(); ctx.moveTo(Px,Py); ctx.lineTo(focX,focY); ctx.stroke();
-    // line P→dir
-    ctx.strokeStyle='rgba(78,205,196,0.7)'; ctx.lineWidth=2.5;
-    ctx.beginPath(); ctx.moveTo(Px,Py); ctx.lineTo(Px,dirY); ctx.stroke();
-    // foot marker
-    ctx.strokeStyle='rgba(78,205,196,0.5)'; ctx.lineWidth=1.5;
-    ctx.strokeRect(Px-5,dirY-5,10,10);
-
-    // mid labels
-    const mfx=(Px+focX)/2+10, mfy=(Py+focY)/2;
-    ctx.fillStyle='rgba(124,106,245,0.9)'; ctx.font='bold 12px sans-serif'; ctx.textAlign='left';
-    ctx.fillText(dF.toFixed(1),mfx,mfy);
-    const mdx=Px+8, mdy=(Py+dirY)/2;
-    ctx.fillStyle='rgba(78,205,196,0.9)';
-    ctx.fillText(dD.toFixed(1),mdx,mdy);
-
-    // P
-    ctx.beginPath(); ctx.arc(Px,Py,11,0,PI*2);
+    ctx.beginPath();ctx.arc(focX,focY,9,0,PI*2);ctx.fillStyle=PRIMARY;ctx.fill();
+    ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('F',focX,focY+18);
+    const dF=Math.sqrt((Px-focX)**2+(Py-focY)**2),dD=Math.abs(Py-dirY);
+    ctx.strokeStyle='rgba(65,183,255,0.8)';ctx.lineWidth=2.5;
+    ctx.beginPath();ctx.moveTo(Px,Py);ctx.lineTo(focX,focY);ctx.stroke();
+    ctx.strokeStyle='rgba(24,180,140,0.8)';ctx.lineWidth=2.5;
+    ctx.beginPath();ctx.moveTo(Px,Py);ctx.lineTo(Px,dirY);ctx.stroke();
+    ctx.strokeStyle='rgba(24,180,140,0.5)';ctx.lineWidth=1.5;ctx.strokeRect(Px-5,dirY-5,10,10);
+    ctx.fillStyle='rgba(65,183,255,0.9)';ctx.font='bold 11px sans-serif';ctx.textAlign='left';ctx.fillText(dF.toFixed(1),(Px+focX)/2+8,(Py+focY)/2);
+    ctx.fillStyle='rgba(24,180,140,0.9)';ctx.fillText(dD.toFixed(1),Px+8,(Py+dirY)/2);
+    ctx.beginPath();ctx.arc(Px,Py,11,0,PI*2);
     const pg=ctx.createRadialGradient(Px,Py,0,Px,Py,11);
-    pg.addColorStop(0,'#fff'); pg.addColorStop(1,'rgba(255,80,120,0.8)');
-    ctx.fillStyle=pg; ctx.fill();
-    ctx.fillStyle='#111'; ctx.font='bold 11px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('P',Px,Py+4);
-
-    // update UI
-    $('dF').textContent=dF.toFixed(2);
-    $('dD').textContent=dD.toFixed(2);
-    const diff=Math.abs(dF-dD);
-    $('dDiff').textContent=diff.toFixed(2);
-    const distMsg=$('distMsg');
-    if(diff<1.5){
-      distMsg.style.background='rgba(78,205,196,0.12)';
-      distMsg.style.borderColor='rgba(78,205,196,0.3)';
-      distMsg.style.color='var(--accent3)';
-      distMsg.textContent='✨ Sì! Le due distanze sono (quasi) identiche! Questo vale per OGNI punto sulla curva.';
-    } else {
-      distMsg.style.background='rgba(255,255,255,0.04)';
-      distMsg.style.borderColor='rgba(255,255,255,0.1)';
-      distMsg.style.color='var(--muted)';
-      distMsg.textContent='↔ Trascina P e osserva le distanze…';
-    }
+    pg.addColorStop(0,'#fff');pg.addColorStop(1,'rgba(204,0,102,0.8)');
+    ctx.fillStyle=pg;ctx.fill();
+    ctx.fillStyle='#071e34';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.fillText('P',Px,Py+4);
+    $('dF').textContent=dF.toFixed(2);$('dD').textContent=dD.toFixed(2);
+    const diff=Math.abs(dF-dD);$('dDiff').textContent=diff.toFixed(2);
+    const dm=$('distMsg');
+    if(diff<1.5){dm.className='msg success';dm.textContent='✨ Sì! Le due distanze sono (quasi) identiche! Questo vale per OGNI punto sulla curva.';}
+    else{dm.className='msg info';dm.textContent='↔ Trascina P e osserva le distanze…';}
   }
-
-  function getPos(e){
-    const r=canvas.getBoundingClientRect();
-    const scl=canvas.width/r.width;
-    const clientX=e.touches?e.touches[0].clientX:e.clientX;
-    const clientY=e.touches?e.touches[0].clientY:e.clientY;
-    return {x:(clientX-r.left)*scl, y:(clientY-r.top)*scl};
+  function pos(e){
+    const r=canvas.getBoundingClientRect(),sc=canvas.width/r.width;
+    const cx=e.touches?e.touches[0].clientX:e.clientX,cy=e.touches?e.touches[0].clientY:e.clientY;
+    return{x:(cx-r.left)*sc,y:(cy-r.top)*sc};
   }
-
-  canvas.addEventListener('mousedown',e=>{dragging=true;});
-  canvas.addEventListener('mousemove',e=>{
-    if(!dragging) return;
-    const pos=getPos(e); const s=snapToCurve(pos.x); Px=s.x; Py=s.y; draw();
-  });
-  canvas.addEventListener('mouseup',()=>{dragging=false;});
+  canvas.addEventListener('mousedown',()=>dragging=true);
+  canvas.addEventListener('mousemove',e=>{if(!dragging)return;const s=snap(pos(e).x);Px=s.x;Py=s.y;draw();});
+  canvas.addEventListener('mouseup',()=>dragging=false);
   canvas.addEventListener('touchstart',e=>{dragging=true;e.preventDefault();},{passive:false});
-  canvas.addEventListener('touchmove',e=>{
-    if(!dragging)return; e.preventDefault();
-    const pos=getPos(e); const s=snapToCurve(pos.x); Px=s.x; Py=s.y; draw();
-  },{passive:false});
-  canvas.addEventListener('touchend',()=>{dragging=false;});
-
+  canvas.addEventListener('touchmove',e=>{if(!dragging)return;e.preventDefault();const s=snap(pos(e).x);Px=s.x;Py=s.y;draw();},{passive:false});
+  canvas.addEventListener('touchend',()=>dragging=false);
   draw();
 })();
 
-// ══════════════════════════════════════════════════════
-//  BONUS – FORMULA CANVAS
-// ══════════════════════════════════════════════════════
+// ── BONUS – FORMULA ──
 (function(){
-  const canvas = $('formulaCanvas');
-  const ctx = canvas.getContext('2d');
-  const W=canvas.width, H=canvas.height;
-
-  const ox=W/2, oy=H/2;
-  const scale=18;
-
+  const canvas=$('formulaCanvas'),ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height,ox=W/2,oy=H/2,sc=18;
   function draw(){
-    const a = +$('aSlider').value / 10;
-    const b = +$('bSlider').value / 10;
-    const c = +$('cSlider').value / 10;
-
-    $('aVal').textContent=a.toFixed(1);
-    $('bVal').textContent=b.toFixed(1);
-    $('cVal').textContent=c.toFixed(1);
-
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#12122a'; ctx.fillRect(0,0,W,H);
-
-    // grid + axes
-    ctx.strokeStyle='rgba(255,255,255,0.05)'; ctx.lineWidth=1;
-    for(let x=0;x<W;x+=scale){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
-    for(let y=0;y<H;y+=scale){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
-
-    ctx.strokeStyle='rgba(255,255,255,0.25)'; ctx.lineWidth=1.5;
+    const a=+$('aSlider').value/10,b=+$('bSlider').value/10,c=+$('cSlider').value/10;
+    $('aVal').textContent=a.toFixed(1);$('bVal').textContent=b.toFixed(1);$('cVal').textContent=c.toFixed(1);
+    ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(65,183,255,0.06)';ctx.lineWidth=1;
+    for(let x=0;x<W;x+=sc){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=sc){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    ctx.strokeStyle='rgba(255,255,255,0.18)';ctx.lineWidth=1.5;
     ctx.beginPath();ctx.moveTo(0,oy);ctx.lineTo(W,oy);ctx.stroke();
     ctx.beginPath();ctx.moveTo(ox,0);ctx.lineTo(ox,H);ctx.stroke();
-
-    // axis labels
-    ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.font='12px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('x',W-10,oy-8); ctx.fillText('y',ox+12,12);
-
-    // parabola
-    if(Math.abs(a)<0.001){ // degenerate
-      ctx.strokeStyle='rgba(124,106,245,0.7)'; ctx.lineWidth=2.5;
-      const y_line = oy - (c)*scale;
-      ctx.beginPath(); ctx.moveTo(0,y_line); ctx.lineTo(W,y_line); ctx.stroke();
+    ctx.fillStyle='rgba(255,255,255,0.22)';ctx.font='11px sans-serif';ctx.textAlign='center';
+    ctx.fillText('x',W-10,oy-8);ctx.fillText('y',ox+12,12);
+    if(Math.abs(a)<0.001){
+      ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.7)';ctx.lineWidth=2.5;
+      const yl=oy-c*sc;ctx.moveTo(0,yl);ctx.lineTo(W,yl);ctx.stroke();
     } else {
-      ctx.beginPath(); ctx.strokeStyle='rgba(124,106,245,0.9)'; ctx.lineWidth=3;
-      let first=true;
+      ctx.beginPath();ctx.strokeStyle=PRIMARY;ctx.lineWidth=3;let first=true;
       for(let px=0;px<W;px+=2){
-        const xm=(px-ox)/scale;
-        const ym=a*xm*xm+b*xm+c;
-        const py=oy-ym*scale;
+        const xm=(px-ox)/sc,ym=a*xm*xm+b*xm+c,py=oy-ym*sc;
         if(py<-20||py>H+20){first=true;continue;}
         first?(ctx.moveTo(px,py),first=false):ctx.lineTo(px,py);
       }
       ctx.stroke();
-
-      // vertex
-      const vx=-b/(2*a);
-      const vy=a*vx*vx+b*vx+c;
-      const vpx=ox+vx*scale, vpy=oy-vy*scale;
+      const vx=-b/(2*a),vy=a*vx*vx+b*vx+c,vpx=ox+vx*sc,vpy=oy-vy*sc;
       if(vpx>0&&vpx<W&&vpy>0&&vpy<H){
-        ctx.beginPath(); ctx.arc(vpx,vpy,7,0,PI*2);
-        ctx.fillStyle='rgba(245,166,35,0.9)'; ctx.fill();
-        ctx.fillStyle='rgba(245,166,35,0.9)'; ctx.font='bold 12px sans-serif'; ctx.textAlign='left';
-        ctx.fillText('V',vpx+10,vpy-4);
+        ctx.beginPath();ctx.arc(vpx,vpy,7,0,PI*2);ctx.fillStyle=ACCENT;ctx.fill();
+        ctx.fillStyle=ACCENT;ctx.font='bold 11px sans-serif';ctx.textAlign='left';ctx.fillText('V',vpx+10,vpy-4);
       }
     }
-
-    // formula label
-    const sign=n=>n>=0?`+${n.toFixed(1)}`:`${n.toFixed(1)}`;
-    $('formulaLabel').textContent=`y = ${a.toFixed(1)}x² ${sign(b)}x ${sign(c)}`;
+    const s=n=>n>=0?`+${n.toFixed(1)}`:`${n.toFixed(1)}`;
+    $('formulaLabel').textContent=`y = ${a.toFixed(1)}x² ${s(b)}x ${s(c)}`;
   }
-
-  $('aSlider').oninput=draw;
-  $('bSlider').oninput=draw;
-  $('cSlider').oninput=draw;
+  $('aSlider').oninput=draw;$('bSlider').oninput=draw;$('cSlider').oninput=draw;
   draw();
 })();
 </script>
