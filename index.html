@@ -775,13 +775,22 @@ window.dispatchEvent(new Event('scroll'));
   window.launchBall=function(){
     if(animId)cancelAnimationFrame(animId);
     const angle=+$('angleSlider').value*PI/180,force=+$('forceSlider').value;
-    const gY=canvas.height-30,v0=force*.9,vx=v0*Math.cos(angle),vy=v0*Math.sin(angle),g=9.8,sc=0.35;
+    const gY=canvas.height-30,v0=force*.9,vx=v0*Math.cos(angle),vy=v0*Math.sin(angle),g=9.8,sc=0.87;
+    const TAIL=20; // punti di coda visibili dietro alla palla
     const pts=[];let s=0;
+    const color=COLORS[traces.length%COLORS.length];
     function step(){
       const px=40+vx*s*sc,py=gY-(vy*s-.5*g*s*s)*sc;
       if(px<canvas.width-10&&py<gY+5){
-        pts.push({x:px,y:py});base();
-        ctx.beginPath();ctx.arc(px,py,9,0,PI*2);ctx.fillStyle=COLORS[traces.length%COLORS.length];ctx.fill();
+        pts.push({x:px,y:py});
+        base();
+        // disegna solo la coda (ultimi TAIL punti)
+        const tail=pts.slice(-TAIL);
+        ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2.5;
+        tail.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+        ctx.stroke();
+        // palla
+        ctx.beginPath();ctx.arc(px,py,9,0,PI*2);ctx.fillStyle=color;ctx.fill();
         ctx.beginPath();ctx.arc(px-2,py-2,2.5,0,PI*2);ctx.fillStyle='rgba(255,255,255,.7)';ctx.fill();
         s+=0.12;animId=requestAnimationFrame(step);
       } else {traces.push(pts);if(traces.length>5)traces.shift();base();}
