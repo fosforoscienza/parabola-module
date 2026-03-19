@@ -873,7 +873,7 @@ window.dispatchEvent(new Event('scroll'));
     if(revealed){
       const p2=Math.abs(focY-dirY)/2,vY=(focY+dirY)/2;
       ctx.beginPath();ctx.strokeStyle='rgba(65,183,255,0.75)';ctx.lineWidth=3;
-      for(let x=20;x<W-20;x+=2){const dx=x-focX,y=vY+dx*dx/(4*p2)*(focY<dirY?1:-1);x===20?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+      for(let x=20;x<W-20;x+=2){const dx=x-focX,y=vY+dx*dx/(4*p2)*(focY>dirY?1:-1);x===20?ctx.moveTo(x,y):ctx.lineTo(x,y);}
       ctx.stroke();
     }
     userPts.forEach(p=>{
@@ -909,7 +909,7 @@ window.dispatchEvent(new Event('scroll'));
   const W=canvas.width,H=canvas.height,focX=W/2,focY=H/2-50,dirY=H/2+50;
   const p2=Math.abs(focY-dirY)/2,vY=(focY+dirY)/2;
   let Px=focX,Py=vY,dragging=false;
-  function parabY(x){return vY+(x-focX)**2/(4*p2);}
+  function parabY(x){return vY-(x-focX)**2/(4*p2);}
   function snap(x){const cx=Math.max(20,Math.min(W-20,x));return{x:cx,y:parabY(cx)};}
   function draw(){
     ctx.clearRect(0,0,W,H);ctx.fillStyle=BG_DARK;ctx.fillRect(0,0,W,H);
