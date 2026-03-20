@@ -1,0 +1,127 @@
+{
+  "title": "La Parabole — Fosforo Scienza",
+  "logoSub": "La Fête de la Science",
+  "nav": {
+    "world": "Dans le monde",
+    "explore": "Explorer",
+    "discover": "Découvrir",
+    "definition": "Définition"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Module interactif",
+    "title": "Tout commence<br>depuis <span class=\"accent\">une forme</span>",
+    "sub": "Un voyage des ponts suspendus aux miroirs des télescopes, jusqu'à découvrir — par toi-même — ce qu'est vraiment une parabole.",
+    "cta": "Commencer le voyage ↓",
+    "scroll": "défiler"
+  },
+  "world": {
+    "label": "La parabole dans le monde",
+    "title": "Cette forme est partout<br>autour de toi",
+    "intro": "Avant toute formule, regarde : combien de fois par jour rencontres-tu cette courbe sans le savoir ?",
+    "caption": "↑ Trois scènes animées : trajectoire de lancement · pont suspendu · réflecteur parabolique",
+    "cards": {
+      "bridges": {
+        "title": "Ponts suspendus",
+        "text": "Les câbles porteurs du Golden Gate et de presque tous les ponts suspendus tracent une courbe parabolique, parfaite pour distribuer le poids."
+      },
+      "mirrors": {
+        "title": "Miroirs paraboliques",
+        "text": "Les télescopes, les antennes satellitaires et les réflecteurs de phares exploitent la forme parabolique pour concentrer rayons et signaux en un seul point."
+      },
+      "trajectories": {
+        "title": "Trajectoires",
+        "text": "Un coup de pied, un lancer, un saut : tout objet lancé en l'air suit exactement une parabole."
+      },
+      "architecture": {
+        "title": "Architecture",
+        "text": "Des arcs paraboliques apparaissent dans les cathédrales, les stades et les toitures de grands espaces : ils supportent d'énormes charges avec une élégance structurelle."
+      },
+      "food": {
+        "title": "Même dans la nourriture",
+        "text": "La section d'une glace, la courbe d'une banane, le jet d'eau d'une fontaine : toutes des paraboles."
+      },
+      "antenna": {
+        "title": "Antennes TV",
+        "text": "Le \"plat\" sur le balcon de tes voisins est littéralement une demi-parabole : il capte le signal satellite et le concentre en un point précis."
+      }
+    },
+    "canvasTraj": "⚽ Trajectoire",
+    "canvasBridge": "🌉 Pont suspendu",
+    "canvasReflector": "📡 Réflecteur"
+  },
+  "canvas": {
+    "directrix": "d (directrice)"
+  },
+  "explore": {
+    "label": "Activité 1 et 2",
+    "title": "Joue avec ces formes",
+    "intro": "On ne te dit rien encore. Explore d'abord, l'explication viendra d'elle-même."
+  },
+  "act1": {
+    "num": "Activité 1 · Lance !",
+    "title": "Lance la balle",
+    "desc": "Change l'angle et la force. Observe la trace laissée dans l'air. Quelle forme a-t-elle ?",
+    "angle": "Angle de lancement",
+    "force": "Force de lancement",
+    "launch": "🚀 Lancer",
+    "clear": "Effacer les traces"
+  },
+  "act2": {
+    "num": "Activité 2 · Réflecteur",
+    "title": "L'antenne et les rayons",
+    "desc": "Déplace le curseur pour changer la profondeur du \"bol\". Remarque où convergent tous les rayons parallèles venant du haut.",
+    "depth": "Profondeur de l'antenne",
+    "hint": "💡 Tous les rayons se rencontrent au même point. Ce point s'appelle le <strong>foyer</strong>."
+  },
+  "discover": {
+    "label": "Activité 3 et 4",
+    "title": "Construis la courbe<br>de zéro",
+    "intro": "Tu es sur le point de découvrir toi-même quelle est la règle secrète qui génère cette forme."
+  },
+  "act3": {
+    "num": "Activité 3 · Chasse au point",
+    "title": "Trouve les points « corrects »",
+    "desc": "Dans le plan il y a un point <span style=\"color:var(--primary);font-weight:700\">F</span> (foyer) et une droite <span style=\"color:var(--green);font-weight:700\">d</span> (directrice).<br><br>Clique sur les points qui te semblent <strong style=\"color:#fff\">équidistants</strong> <span class=\"tip\">?<span class=\"tip-text\">Équidistant = à la même distance de deux choses différentes</span></span> de F et de la droite d.",
+    "reveal": "👁 Révéler la courbe",
+    "reset": "Recommencer",
+    "canvasHint": "Clique où tu penses que dist(P,F) = dist(P,d)",
+    "ok": "✅ Bravo ! Ce point est vraiment équidistant de F et de d !",
+    "ko": "❌ Pas tout à fait : les deux distances ne sont pas égales. Réessaie !"
+  },
+  "act4": {
+    "num": "Activité 4 · Mesure les distances",
+    "title": "Déplace le point sur la courbe",
+    "desc": "Fais glisser le point <span style=\"color:var(--primary);font-weight:700\">P</span> le long de la courbe rouge. Observe les deux distances. Tu remarques quelque chose ?",
+    "dfLabel": "Distance de F",
+    "ddLabel": "Distance de d",
+    "diffLabel": "Différence",
+    "drag": "↔ Fais glisser P sur le canvas ci-dessus !",
+    "equal": "✨ Oui ! Les deux distances sont (presque) identiques ! Cela vaut pour CHAQUE point de la courbe.",
+    "observe": "↔ Fais glisser P et observe les distances…"
+  },
+  "def": {
+    "label": "La réponse",
+    "title": "Maintenant tu peux le dire toi-même :<br>qu'est-ce qu'une parabole ?",
+    "intro": "Dans les activités précédentes tu l'as déjà découvert. La voici, enfin, avec les mots des mathématiques.",
+    "text": "Une <em>parabole</em> est l'ensemble de tous les points du plan qui sont <em>équidistants</em> d'un point fixe appelé <span class=\"kw\">foyer (F)</span> et d'une droite fixe appelée <span class=\"kw\">directrice (d)</span>.<br><br>Pour tout point P sur la parabole, il vaut toujours :",
+    "form1": "Forme de base — axe vertical, sommet à l'origine",
+    "form2": "Forme générale — a détermine l'ouverture et la direction",
+    "form3": "Axe horizontal — s'ouvre à droite ou à gauche"
+  },
+  "bonus": {
+    "num": "Bonus · Paramètres",
+    "title": "Joue avec a, b, c",
+    "desc": "Maintenant que tu sais ce qu'est une parabole, explore comment les coefficients changent la courbe.",
+    "a": "a (ouverture)",
+    "b": "b (position)",
+    "c": "c (translation)"
+  },
+  "congrats": {
+    "title": "🎉 Tu as découvert la parabole !",
+    "text": "Tu es parti d'un pont et d'une antenne. Tu as lancé des balles, mesuré des distances. Et maintenant tu sais ce qui unifie tout : la règle du foyer et de la directrice."
+  },
+  "footer": {
+    "tagline": "La Fête de la Science",
+    "module": "Module interactif · La Parabole"
+  }
+}

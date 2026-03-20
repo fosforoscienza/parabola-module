@@ -88,14 +88,15 @@ nav a {
 }
 nav a:hover, nav a.active { color: #fff; background: rgba(65,183,255,0.15); }
 
-.lang-btn {
+.lang-select {
   background: rgba(65,183,255,0.12); border: 1px solid rgba(65,183,255,0.35);
   color: var(--primary); border-radius: var(--radius-pill);
   padding: 5px 14px; font-size: 0.82rem; font-weight: 700;
   cursor: pointer; font-family: var(--font); transition: all .2s;
-  letter-spacing: .05em;
+  letter-spacing: .05em; outline: none; appearance: none; -webkit-appearance: none;
 }
-.lang-btn:hover { background: var(--primary); color: var(--bg-dark); }
+.lang-select:hover { background: rgba(65,183,255,0.22); }
+.lang-select option { background: #0d2d4a; color: #fff; font-weight: 600; }
 
 /* ===========================
    HERO
@@ -398,7 +399,12 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
         <a href="#discover"   class="nav-link" data-i18n="nav.discover">Scopri</a>
         <a href="#definition" class="nav-link" data-i18n="nav.definition">Definizione</a>
       </nav>
-      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+      <select class="lang-select" id="langSelect" onchange="setLang(this.value)">
+        <option value="it">🇮🇹 IT</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+        <option value="fr">🇫🇷 FR</option>
+      </select>
     </div>
   </div>
 </header>
@@ -681,12 +687,11 @@ function updateUI() {
   });
   document.title = i18next.t('title');
   document.documentElement.lang = i18next.language;
-  $('langBtn').textContent = i18next.t('langSwitch');
+  $('langSelect').value = i18next.language;
 }
 
-window.toggleLang = function() {
-  const newLng = i18next.language === 'it' ? 'en' : 'it';
-  i18next.changeLanguage(newLng, () => { updateUI(); });
+window.setLang = function(lng) {
+  i18next.changeLanguage(lng, () => { updateUI(); });
 };
 
 i18next
