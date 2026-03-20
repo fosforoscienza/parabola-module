@@ -42,7 +42,7 @@
       },
       "antenna": {
         "title": "电视天线",
-        "text": "邻居阳台上的"锅"实际上是半个抛物线：它捕捉卫星信号并将其聚焦到一个精确的点。"
+        "text": "邻居阳台上的\"锅\"实际上是半个抛物线：它捕捉卫星信号并将其聚焦到一个精确的点。"
       }
     },
     "canvasTraj": "⚽ 轨迹",
@@ -69,7 +69,7 @@
   "act2": {
     "num": "活动 2 · 反射器",
     "title": "天线和光线",
-    "desc": "移动滑块改变"碗"的深度。注意从上方射入的平行光线汇聚在哪里。",
+    "desc": "移动滑块改变\"碗\"的深度。注意从上方射入的平行光线汇聚在哪里。",
     "depth": "天线深度",
     "hint": "💡 所有光线汇聚在同一点。这个点叫做<strong>焦点</strong>。"
   },
@@ -80,7 +80,7 @@
   },
   "act3": {
     "num": "活动 3 · 寻点",
-    "title": "找到"正确"的点",
+    "title": "找到\"正确\"的点",
     "desc": "平面上有一个点 <span style=\"color:var(--primary);font-weight:700\">F</span>（焦点）和一条线 <span style=\"color:var(--green);font-weight:700\">d</span>（准线）。<br><br>点击那些看起来与 F 和直线 d <strong style=\"color:#fff\">等距</strong> <span class=\"tip\">?<span class=\"tip-text\">等距 = 与两个不同事物距离相同</span></span> 的点。",
     "reveal": "👁 显示曲线",
     "reset": "重新开始",
