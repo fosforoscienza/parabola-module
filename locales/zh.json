@@ -1,0 +1,127 @@
+{
+  "title": "抛物线 — Fosforo Scienza",
+  "logoSub": "科学节",
+  "nav": {
+    "world": "在世界中",
+    "explore": "探索",
+    "discover": "发现",
+    "definition": "定义"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — 互动模块",
+    "title": "一切都从<br><span class=\"accent\">一个形状</span>开始",
+    "sub": "从悬索桥到望远镜镜面，踏上一段旅程，亲自发现——抛物线究竟是什么。",
+    "cta": "开始旅程 ↓",
+    "scroll": "滚动"
+  },
+  "world": {
+    "label": "世界中的抛物线",
+    "title": "这个形状无处不在<br>就在你身边",
+    "intro": "在任何公式之前，看看：你每天遇到这条曲线多少次却不自知？",
+    "caption": "↑ 三个动画场景：抛体轨迹 · 悬索桥 · 抛物面反射器",
+    "cards": {
+      "bridges": {
+        "title": "悬索桥",
+        "text": "金门大桥及几乎所有悬索桥的承重钢缆都画出一条抛物线，完美地分布重力。"
+      },
+      "mirrors": {
+        "title": "抛物面镜",
+        "text": "望远镜、卫星天线和灯塔反射镜利用抛物线形状将光线和信号汇聚到一点。"
+      },
+      "trajectories": {
+        "title": "轨迹",
+        "text": "踢球、投掷、跳跃：任何被抛向空中的物体都精确地遵循抛物线轨迹。"
+      },
+      "architecture": {
+        "title": "建筑",
+        "text": "抛物线拱形出现在教堂、体育场和大型空间的屋顶中：以结构之美承载巨大荷载。"
+      },
+      "food": {
+        "title": "甚至在食物中",
+        "text": "冰淇淋的截面、香蕉的弧度、喷泉的水流：全都是抛物线。"
+      },
+      "antenna": {
+        "title": "电视天线",
+        "text": "邻居阳台上的"锅"实际上是半个抛物线：它捕捉卫星信号并将其聚焦到一个精确的点。"
+      }
+    },
+    "canvasTraj": "⚽ 轨迹",
+    "canvasBridge": "🌉 悬索桥",
+    "canvasReflector": "📡 反射器"
+  },
+  "canvas": {
+    "directrix": "d（准线）"
+  },
+  "explore": {
+    "label": "活动 1 & 2",
+    "title": "玩转这些形状",
+    "intro": "我们还什么都不告诉你。先探索，解释自然会来。"
+  },
+  "act1": {
+    "num": "活动 1 · 发射！",
+    "title": "发射球",
+    "desc": "改变角度和力量。观察空中留下的轨迹。它是什么形状？",
+    "angle": "发射角度",
+    "force": "发射力量",
+    "launch": "🚀 发射",
+    "clear": "清除轨迹"
+  },
+  "act2": {
+    "num": "活动 2 · 反射器",
+    "title": "天线和光线",
+    "desc": "移动滑块改变"碗"的深度。注意从上方射入的平行光线汇聚在哪里。",
+    "depth": "天线深度",
+    "hint": "💡 所有光线汇聚在同一点。这个点叫做<strong>焦点</strong>。"
+  },
+  "discover": {
+    "label": "活动 3 & 4",
+    "title": "从零构建<br>曲线",
+    "intro": "你即将亲自发现生成这种形状的秘密规则。"
+  },
+  "act3": {
+    "num": "活动 3 · 寻点",
+    "title": "找到"正确"的点",
+    "desc": "平面上有一个点 <span style=\"color:var(--primary);font-weight:700\">F</span>（焦点）和一条线 <span style=\"color:var(--green);font-weight:700\">d</span>（准线）。<br><br>点击那些看起来与 F 和直线 d <strong style=\"color:#fff\">等距</strong> <span class=\"tip\">?<span class=\"tip-text\">等距 = 与两个不同事物距离相同</span></span> 的点。",
+    "reveal": "👁 显示曲线",
+    "reset": "重新开始",
+    "canvasHint": "点击你认为 dist(P,F) = dist(P,d) 的位置",
+    "ok": "✅ 太棒了！那个点确实与 F 和 d 等距！",
+    "ko": "❌ 不完全对：两段距离不相等。再试一次！"
+  },
+  "act4": {
+    "num": "活动 4 · 测量距离",
+    "title": "在曲线上移动点",
+    "desc": "沿红色曲线拖动点 <span style=\"color:var(--primary);font-weight:700\">P</span>。观察两段距离。你注意到什么了吗？",
+    "dfLabel": "到 F 的距离",
+    "ddLabel": "到 d 的距离",
+    "diffLabel": "差值",
+    "drag": "↔ 在上方画布上拖动 P！",
+    "equal": "✨ 是的！两段距离（几乎）完全相同！这对曲线上的每一个点都成立。",
+    "observe": "↔ 拖动 P 并观察距离…"
+  },
+  "def": {
+    "label": "答案",
+    "title": "现在你可以自己说：<br>什么是抛物线？",
+    "intro": "在之前的活动中你已经发现了。这里，终于，用数学的语言表达出来。",
+    "text": "<em>抛物线</em>是平面上所有到一个固定点（称为<span class=\"kw\">焦点 (F)</span>）和一条固定直线（称为<span class=\"kw\">准线 (d)</span>）<em>等距</em>的点的集合。<br><br>对于抛物线上的每一个点 P，总有：",
+    "form1": "基本形式——纵轴，顶点在原点",
+    "form2": "一般形式——a 决定开口和方向",
+    "form3": "横轴——向左或向右开口"
+  },
+  "bonus": {
+    "num": "附加 · 参数",
+    "title": "玩转 a、b、c",
+    "desc": "现在你知道什么是抛物线了，来探索系数如何改变曲线。",
+    "a": "a（开口）",
+    "b": "b（位置）",
+    "c": "c（平移）"
+  },
+  "congrats": {
+    "title": "🎉 你发现了抛物线！",
+    "text": "你从一座桥和一根天线出发，发射了球，测量了距离。现在你知道是什么统一了这一切：焦点与准线的规则。"
+  },
+  "footer": {
+    "tagline": "科学节",
+    "module": "互动模块 · 抛物线"
+  }
+}

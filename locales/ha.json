@@ -1,0 +1,127 @@
+{
+  "title": "Parabola — Fosforo Scienza",
+  "logoSub": "Bikin Kimiyya",
+  "nav": {
+    "world": "A Duniya",
+    "explore": "Bincika",
+    "discover": "Gano",
+    "definition": "Ma'ana"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Ƙarin Hulɗa",
+    "title": "Duk abubuwa suna farawa<br>daga <span class=\"accent\">sifa ɗaya</span>",
+    "sub": "Tafiya daga gadoji masu ratayewa zuwa madubai na tabarau, har gano — da kanku — menene parabola gaskiya.",
+    "cta": "Fara tafiya ↓",
+    "scroll": "zamowa"
+  },
+  "world": {
+    "label": "Parabola a duniya",
+    "title": "Wannan sifa tana ko'ina<br>a kewaye da kai",
+    "intro": "Kafin wata ma'auni, duba: sau nawa a rana kana haduwa da wannan layin ba tare da sanin ba?",
+    "caption": "↑ Hotuna uku masu motsi: hanyar jifawa · gada mai ratayewa · mai nuna haske na parabola",
+    "cards": {
+      "bridges": {
+        "title": "Gadoji Masu Ratayewa",
+        "text": "Igiyoyin Golden Gate da kusan kowane gada mai ratayewa suna zana layin parabola, cikakke don rarraba nauyi."
+      },
+      "mirrors": {
+        "title": "Madubai na Parabola",
+        "text": "Tabarau, antena na tauraron dan adam da masu nuna haske na hasumiyar fitila suna amfani da sifar parabola don tattara hasken da alamu a wuri ɗaya."
+      },
+      "trajectories": {
+        "title": "Hanyoyin Tafiya",
+        "text": "Harbi, jifa, tsalle: kowane abu da aka jefa sama yana bin parabola daidai daidai."
+      },
+      "architecture": {
+        "title": "Gini",
+        "text": "Bakan parabola suna bayyana a coci-coci, filayen wasa da rufin manyan wurare: suna ɗaukar nauyi mai yawa da kyawun tsari."
+      },
+      "food": {
+        "title": "Ko a Cikin Abinci",
+        "text": "Yankan kayan ƙanƙara, layin ayaba, ruwan famfo: duk parabola ne."
+      },
+      "antenna": {
+        "title": "Antena na TV",
+        "text": "\"Faranti\" a balcony ɗin maƙwabtanka shi ne rabin parabola a zahiri: yana kama siginar tauraron dan adam kuma yana tattara shi a wuri ɗaya daidai."
+      }
+    },
+    "canvasTraj": "⚽ Hanya",
+    "canvasBridge": "🌉 Gada Mai Ratayewa",
+    "canvasReflector": "📡 Mai Nuna Haske"
+  },
+  "canvas": {
+    "directrix": "d (layin jagora)"
+  },
+  "explore": {
+    "label": "Ayyuka 1 & 2",
+    "title": "Yi wasa da waɗannan sifofin",
+    "intro": "Ba za mu gaya maka kome yanzu ba. Da farko bincika, sannan bayani zai zo da kansa."
+  },
+  "act1": {
+    "num": "Aiki 1 · Jefa!",
+    "title": "Jefa ƙwallon",
+    "desc": "Canza kusurwa da ƙarfi. Lura da sawun da ya rage a sama. Yana da wace sifa?",
+    "angle": "Kusurwar jifawa",
+    "force": "Ƙarfin jifawa",
+    "launch": "🚀 Jefa",
+    "clear": "Share sawaye"
+  },
+  "act2": {
+    "num": "Aiki 2 · Mai Nuna Haske",
+    "title": "Antena da hasken",
+    "desc": "Motsa maƙanƙan don canza zurfin \"kwano\". Lura inda duk hasken daidai daidai daga sama suke haɗuwa.",
+    "depth": "Zurfin antena",
+    "hint": "💡 Duk hasken suna haɗuwa a wuri ɗaya. Wannan wuri ana kiransa <strong>cibiya</strong>."
+  },
+  "discover": {
+    "label": "Ayyuka 3 & 4",
+    "title": "Gina layin<br>daga farko",
+    "intro": "Kana gab da gano da kanka menene ƙa'idar asiri da ke haifar da wannan sifa."
+  },
+  "act3": {
+    "num": "Aiki 3 · Neman wurin",
+    "title": "Nemo wuraren \"daidai\"",
+    "desc": "A fagen akwai wuri <span style=\"color:var(--primary);font-weight:700\">F</span> (cibiya) da layi <span style=\"color:var(--green);font-weight:700\">d</span> (layin jagora).<br><br>Danna wuraren da suke ganin <strong style=\"color:#fff\">daidai nisa</strong> <span class=\"tip\">?<span class=\"tip-text\">Daidai nisa = nisa ɗaya daga abubuwa biyu daban-daban</span></span> daga F da layi d.",
+    "reveal": "👁 Nuna layin",
+    "reset": "Fara daga farko",
+    "canvasHint": "Danna inda kake tsammanin dist(P,F) = dist(P,d)",
+    "ok": "✅ Kyau! Wannan wuri yana da nisa ɗaya daga F da d gaskiya!",
+    "ko": "❌ Ba daidai ba gaba ɗaya: nisoshin biyu ba su daidaita. Sake gwadawa!"
+  },
+  "act4": {
+    "num": "Aiki 4 · Auna nisa",
+    "title": "Motsa wuri a layin",
+    "desc": "Ja wuri <span style=\"color:var(--primary);font-weight:700\">P</span> a kan layin ja. Lura da nisoshin biyu. Ka lura da wani abu?",
+    "dfLabel": "Nisa daga F",
+    "ddLabel": "Nisa daga d",
+    "diffLabel": "Bambanci",
+    "drag": "↔ Ja P a kan canvas a sama!",
+    "equal": "✨ I! Nisoshin biyu (kusan) iri ɗaya ne! Wannan ya shafi KOWANE wuri a layin.",
+    "observe": "↔ Ja P ka lura da nisoshi…"
+  },
+  "def": {
+    "label": "Amsa",
+    "title": "Yanzu zaka iya faɗi da kanka:<br>menene parabola?",
+    "intro": "A ayyukan da suka gabata ka riga ka gano. Anan, a ƙarshe, da kalmomin lissafi.",
+    "text": "<em>Parabola</em> ita ce taron dukkan wurare na fage waɗanda ke <em>daidai nisa</em> daga wuri ɗaya na daidaito da ake kira <span class=\"kw\">cibiya (F)</span> da layi na daidaito da ake kira <span class=\"kw\">layin jagora (d)</span>.<br><br>Don kowane wuri P a kan parabola, koyaushe:",
+    "form1": "Sifar asali — axis a tsaye, saman a asali",
+    "form2": "Sifar gaba ɗaya — a yana ƙayyade buɗewa da alkibla",
+    "form3": "Axis a kwance — yana buɗewa zuwa dama ko hagu"
+  },
+  "bonus": {
+    "num": "Ƙari · Sifofi",
+    "title": "Yi wasa da a, b, c",
+    "desc": "Yanzu da ka san menene parabola, bincika yadda coefficients ke canza layin.",
+    "a": "a (buɗewa)",
+    "b": "b (matsayi)",
+    "c": "c (turawa)"
+  },
+  "congrats": {
+    "title": "🎉 Ka gano parabola!",
+    "text": "Ka fara daga gada da antena. Ka jefa ƙwallo, ka auna nisa. Kuma yanzu ka san abin da ke haɗa komai: ƙa'idar cibiya da layin jagora."
+  },
+  "footer": {
+    "tagline": "Bikin Kimiyya",
+    "module": "Ƙarin Hulɗa · Parabola"
+  }
+}

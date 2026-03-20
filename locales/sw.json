@@ -1,0 +1,127 @@
+{
+  "title": "Parabola — Fosforo Scienza",
+  "logoSub": "Sherehe ya Sayansi",
+  "nav": {
+    "world": "Duniani",
+    "explore": "Chunguza",
+    "discover": "Gundua",
+    "definition": "Ufafanuzi"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Moduli ya Mwingiliano",
+    "title": "Kila kitu huanza<br>kutoka <span class=\"accent\">umbo moja</span>",
+    "sub": "Safari kutoka kwa madaraja ya kusimamishwa hadi vioo vya darubini, hadi kugundua — wewe mwenyewe — parabola ni nini kweli kweli.",
+    "cta": "Anza safari ↓",
+    "scroll": "telezesha"
+  },
+  "world": {
+    "label": "Parabola duniani",
+    "title": "Umbo hili lipo kila mahali<br>karibu nawe",
+    "intro": "Kabla ya fomula yoyote, angalia: mara ngapi kwa siku unakutana na mkondo huu bila kujua?",
+    "caption": "↑ Mandhari tatu yenye uhuishaji: mkondo wa kutupa · daraja linalosimamishwa · kiakisi cha parabola",
+    "cards": {
+      "bridges": {
+        "title": "Madaraja ya Kusimamishwa",
+        "text": "Nyaya za Golden Gate na karibu kila daraja linalosimamishwa zinaunda mkondo wa parabola, kamili kwa usambazaji wa uzito."
+      },
+      "mirrors": {
+        "title": "Vioo vya Parabola",
+        "text": "Darubini, antena za setilaiti na viakisi vya taa hutumia umbo la parabola kukusanya miale na ishara katika sehemu moja."
+      },
+      "trajectories": {
+        "title": "Njia za Kuruka",
+        "text": "Mpiga teke, utupaji, kuruka: kitu chochote kilichotupwa hewani hufuata parabola hasa hasa."
+      },
+      "architecture": {
+        "title": "Usanifu",
+        "text": "Matao ya parabola yanaonekana katika makanisa, viwanja vya michezo na paa za nafasi kubwa: hubeba mzigo mkubwa kwa urembo wa kimuundo."
+      },
+      "food": {
+        "title": "Hata katika Chakula",
+        "text": "Mkato wa aiskrimu, mkondo wa ndizi, mwangaza wa chemchemi: zote ni parabola."
+      },
+      "antenna": {
+        "title": "Antena za TV",
+        "text": "\"Sahani\" kwenye balcony ya majirani wako ni nusu ya parabola: inakamata ishara ya setilaiti na kuikusanya katika sehemu moja sahihi."
+      }
+    },
+    "canvasTraj": "⚽ Mkondo",
+    "canvasBridge": "🌉 Daraja linalosimamishwa",
+    "canvasReflector": "📡 Kiakisi"
+  },
+  "canvas": {
+    "directrix": "d (mstari wa kumbukumbu)"
+  },
+  "explore": {
+    "label": "Shughuli 1 & 2",
+    "title": "Cheza na maumbo haya",
+    "intro": "Hatukuambie chochote bado. Chunguza kwanza, kisha maelezo yatakuja yenyewe."
+  },
+  "act1": {
+    "num": "Shughuli 1 · Tupa!",
+    "title": "Tupa mpira",
+    "desc": "Badilisha pembe na nguvu. Angalia mkondo unaobaki hewani. Una umbo gani?",
+    "angle": "Pembe ya kutupa",
+    "force": "Nguvu ya kutupa",
+    "launch": "🚀 Tupa",
+    "clear": "Futa alama"
+  },
+  "act2": {
+    "num": "Shughuli 2 · Kiakisi",
+    "title": "Antena na miale",
+    "desc": "Sogeza kitelezi kubadilisha kina cha \"bakuli\". Angalia miale yote inayokuja kutoka juu inakutana wapi.",
+    "depth": "Kina cha antena",
+    "hint": "💡 Miale yote inakutana katika sehemu moja. Sehemu hiyo inaitwa <strong>mwelekeo</strong>."
+  },
+  "discover": {
+    "label": "Shughuli 3 & 4",
+    "title": "Jenga mkondo<br>kutoka mwanzo",
+    "intro": "Unakaribia kugundua mwenyewe kanuni ya siri inayozalisha umbo hili."
+  },
+  "act3": {
+    "num": "Shughuli 3 · Kuwinda nukta",
+    "title": "Pata nukta \"sahihi\"",
+    "desc": "Kwenye ndege kuna nukta <span style=\"color:var(--primary);font-weight:700\">F</span> (mwelekeo) na mstari <span style=\"color:var(--green);font-weight:700\">d</span> (kumbukumbu).<br><br>Bonyeza kwenye nukta ambazo zinaonekana kuwa <strong style=\"color:#fff\">umbali sawa</strong> <span class=\"tip\">?<span class=\"tip-text\">Umbali sawa = umbali sawa kutoka kwa vitu viwili tofauti</span></span> kutoka F na mstari d.",
+    "reveal": "👁 Onyesha mkondo",
+    "reset": "Anza upya",
+    "canvasHint": "Bonyeza unapofikiri dist(P,F) = dist(P,d)",
+    "ok": "✅ Vizuri sana! Nukta hiyo iko umbali sawa kutoka F na d!",
+    "ko": "❌ Sio hasa: umbali wote hauko sawa. Jaribu tena!"
+  },
+  "act4": {
+    "num": "Shughuli 4 · Pima umbali",
+    "title": "Sogeza nukta kwenye mkondo",
+    "desc": "Buruta nukta <span style=\"color:var(--primary);font-weight:700\">P</span> kando ya mkondo mwekundu. Angalia umbali wote wawili. Je, unaona kitu?",
+    "dfLabel": "Umbali kutoka F",
+    "ddLabel": "Umbali kutoka d",
+    "diffLabel": "Tofauti",
+    "drag": "↔ Buruta P kwenye kavas hapo juu!",
+    "equal": "✨ Ndiyo! Umbali wote wawili (karibu) ni sawa! Hii inatumika kwa KILA nukta kwenye mkondo.",
+    "observe": "↔ Buruta P na uangalie umbali…"
+  },
+  "def": {
+    "label": "Jibu",
+    "title": "Sasa unaweza kusema mwenyewe:<br>parabola ni nini?",
+    "intro": "Katika shughuli zilizopita tayari umegundua. Hapa, hatimaye, kwa lugha ya hisabati.",
+    "text": "<em>Parabola</em> ni mkusanyiko wa nukta zote za ndege ambazo ziko <em>umbali sawa</em> kutoka kwa nukta moja isiyobadilika inayoitwa <span class=\"kw\">mwelekeo (F)</span> na mstari usiohamia unaoitwa <span class=\"kw\">kumbukumbu (d)</span>.<br><br>Kwa kila nukta P kwenye parabola, daima:",
+    "form1": "Umbo la msingi — mhimili wima, kilele kwenye asili",
+    "form2": "Umbo la jumla — a huamua upana na mwelekeo",
+    "form3": "Mhimili wa usawa — unafunguka kulia au kushoto"
+  },
+  "bonus": {
+    "num": "Ziada · Vigezo",
+    "title": "Cheza na a, b, c",
+    "desc": "Sasa unajua parabola ni nini, chunguza jinsi mgawo unavyobadilisha mkondo.",
+    "a": "a (upana)",
+    "b": "b (nafasi)",
+    "c": "c (tafsiri)"
+  },
+  "congrats": {
+    "title": "🎉 Umegundua parabola!",
+    "text": "Ulianza na daraja na antena. Ulitupa mipira, ulipima umbali. Na sasa unajua kinachounganisha kila kitu: kanuni ya mwelekeo na kumbukumbu."
+  },
+  "footer": {
+    "tagline": "Sherehe ya Sayansi",
+    "module": "Moduli ya Mwingiliano · Parabola"
+  }
+}
