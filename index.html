@@ -368,6 +368,18 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ===========================
+   RTL (Arabic)
+   =========================== */
+[dir="rtl"] .activity-num { left: auto; right: 24px; }
+[dir="rtl"] .header-right { flex-direction: row-reverse; }
+[dir="rtl"] .logo-wrap { flex-direction: row-reverse; }
+[dir="rtl"] .slider-row { flex-direction: row-reverse; }
+[dir="rtl"] .btn-row { flex-direction: row-reverse; }
+[dir="rtl"] .cards-grid { direction: rtl; }
+[dir="rtl"] .dist-stats { flex-direction: row-reverse; }
+[dir="rtl"] .section-title::after { margin-left: auto; margin-right: 0; }
+
+/* ===========================
    RESPONSIVE
    =========================== */
 @media(max-width:768px) {
@@ -404,6 +416,9 @@ footer p { color: rgba(255,255,255,0.35); font-size: .83rem; margin-top: 8px; }
         <option value="en">🇬🇧 EN</option>
         <option value="es">🇪🇸 ES</option>
         <option value="fr">🇫🇷 FR</option>
+        <option value="de">🇩🇪 DE</option>
+        <option value="pt">🇵🇹 PT</option>
+        <option value="ar">🇸🇦 AR</option>
       </select>
     </div>
   </div>
@@ -687,6 +702,7 @@ function updateUI() {
   });
   document.title = i18next.t('title');
   document.documentElement.lang = i18next.language;
+  document.documentElement.dir = i18next.language === 'ar' ? 'rtl' : 'ltr';
   $('langSelect').value = i18next.language;
 }
 

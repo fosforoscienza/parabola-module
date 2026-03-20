@@ -1,0 +1,127 @@
+{
+  "title": "Die Parabel — Fosforo Scienza",
+  "logoSub": "Das Fest der Wissenschaft",
+  "nav": {
+    "world": "In der Welt",
+    "explore": "Erkunden",
+    "discover": "Entdecken",
+    "definition": "Definition"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Interaktives Modul",
+    "title": "Alles beginnt<br>mit <span class=\"accent\">einer Form</span>",
+    "sub": "Eine Reise von Hängebrücken zu Teleskopspiegeln, bis du – selbst – herausfindest, was eine Parabel wirklich ist.",
+    "cta": "Reise beginnen ↓",
+    "scroll": "scrollen"
+  },
+  "world": {
+    "label": "Die Parabel in der Welt",
+    "title": "Diese Form ist überall<br>um dich herum",
+    "intro": "Vor jeder Formel, schau: Wie oft am Tag begegnest du dieser Kurve, ohne es zu wissen?",
+    "caption": "↑ Drei animierte Szenen: Wurfparabel · Hängebrücke · Parabolreflektor",
+    "cards": {
+      "bridges": {
+        "title": "Hängebrücken",
+        "text": "Die Tragseile der Golden Gate Bridge und fast jeder Hängebrücke zeichnen eine parabolische Kurve, perfekt zur Lastverteilung."
+      },
+      "mirrors": {
+        "title": "Parabolspiegel",
+        "text": "Teleskope, Satellitenschüsseln und Leuchtturmreflektoren nutzen die parabolische Form, um Strahlen und Signale in einem einzigen Punkt zu bündeln."
+      },
+      "trajectories": {
+        "title": "Flugbahnen",
+        "text": "Ein Tritt, ein Wurf, ein Sprung: Jedes in die Luft geworfene Objekt folgt genau einer Parabel."
+      },
+      "architecture": {
+        "title": "Architektur",
+        "text": "Parabolbögen erscheinen in Kathedralen, Stadien und Dächern großer Räume: Sie tragen enorme Lasten mit struktureller Eleganz."
+      },
+      "food": {
+        "title": "Sogar im Essen",
+        "text": "Der Querschnitt eines Eises, die Kurve einer Banane, der Wasserstrahl eines Brunnens: alles Parabeln."
+      },
+      "antenna": {
+        "title": "TV-Antennen",
+        "text": "Die „Schüssel" auf dem Balkon deiner Nachbarn ist buchstäblich eine halbe Parabel: Sie fängt das Satellitensignal und bündelt es in einem genauen Punkt."
+      }
+    },
+    "canvasTraj": "⚽ Flugbahn",
+    "canvasBridge": "🌉 Hängebrücke",
+    "canvasReflector": "📡 Reflektor"
+  },
+  "canvas": {
+    "directrix": "d (Leitlinie)"
+  },
+  "explore": {
+    "label": "Aktivität 1 & 2",
+    "title": "Spiele mit diesen Formen",
+    "intro": "Wir sagen dir noch nichts. Erkunde erst, dann kommt die Erklärung von selbst."
+  },
+  "act1": {
+    "num": "Aktivität 1 · Wirf!",
+    "title": "Wirf den Ball",
+    "desc": "Ändere Winkel und Kraft. Beobachte die Spur in der Luft. Welche Form hat sie?",
+    "angle": "Abwurfwinkel",
+    "force": "Wurfkraft",
+    "launch": "🚀 Werfen",
+    "clear": "Spuren löschen"
+  },
+  "act2": {
+    "num": "Aktivität 2 · Reflektor",
+    "title": "Die Antenne und die Strahlen",
+    "desc": "Bewege den Regler, um die Tiefe der „Schüssel" zu ändern. Beachte, wo alle parallelen Strahlen von oben konvergieren.",
+    "depth": "Antennentiefe",
+    "hint": "💡 Alle Strahlen treffen sich im selben Punkt. Dieser Punkt heißt <strong>Brennpunkt</strong>."
+  },
+  "discover": {
+    "label": "Aktivität 3 & 4",
+    "title": "Baue die Kurve<br>von Null",
+    "intro": "Du bist dabei, selbst herauszufinden, welche geheime Regel diese Form erzeugt."
+  },
+  "act3": {
+    "num": "Aktivität 3 · Punktjagd",
+    "title": "Finde die „richtigen" Punkte",
+    "desc": "In der Ebene gibt es einen Punkt <span style=\"color:var(--primary);font-weight:700\">F</span> (Brennpunkt) und eine Linie <span style=\"color:var(--green);font-weight:700\">d</span> (Leitlinie).<br><br>Klicke auf die Punkte, die dir <strong style=\"color:#fff\">äquidistant</strong> <span class=\"tip\">?<span class=\"tip-text\">Äquidistant = im gleichen Abstand von zwei verschiedenen Dingen</span></span> von F und der Geraden d zu sein scheinen.",
+    "reveal": "👁 Kurve enthüllen",
+    "reset": "Neu starten",
+    "canvasHint": "Klicke, wo du denkst, dass dist(P,F) = dist(P,d)",
+    "ok": "✅ Super! Dieser Punkt ist wirklich äquidistant von F und d!",
+    "ko": "❌ Nicht ganz: Die beiden Abstände sind nicht gleich. Versuche es erneut!"
+  },
+  "act4": {
+    "num": "Aktivität 4 · Abstände messen",
+    "title": "Bewege den Punkt auf der Kurve",
+    "desc": "Ziehe den Punkt <span style=\"color:var(--primary);font-weight:700\">P</span> entlang der roten Kurve. Beobachte die beiden Abstände. Fällt dir etwas auf?",
+    "dfLabel": "Abstand von F",
+    "ddLabel": "Abstand von d",
+    "diffLabel": "Differenz",
+    "drag": "↔ Ziehe P auf dem Canvas oben!",
+    "equal": "✨ Ja! Die beiden Abstände sind (fast) identisch! Das gilt für JEDEN Punkt auf der Kurve.",
+    "observe": "↔ Ziehe P und beobachte die Abstände…"
+  },
+  "def": {
+    "label": "Die Antwort",
+    "title": "Jetzt kannst du es selbst sagen:<br>Was ist eine Parabel?",
+    "intro": "In den vorherigen Aktivitäten hast du es bereits entdeckt. Hier ist sie, endlich, mit den Worten der Mathematik.",
+    "text": "Eine <em>Parabel</em> ist die Menge aller Punkte der Ebene, die <em>äquidistant</em> von einem festen Punkt namens <span class=\"kw\">Brennpunkt (F)</span> und einer festen Geraden namens <span class=\"kw\">Leitlinie (d)</span> sind.<br><br>Für jeden Punkt P auf der Parabel gilt immer:",
+    "form1": "Grundform — vertikale Achse, Scheitelpunkt im Ursprung",
+    "form2": "Allgemeine Form — a bestimmt Öffnung und Richtung",
+    "form3": "Horizontale Achse — öffnet sich nach rechts oder links"
+  },
+  "bonus": {
+    "num": "Bonus · Parameter",
+    "title": "Spiele mit a, b, c",
+    "desc": "Jetzt, wo du weißt, was eine Parabel ist, erkunde, wie die Koeffizienten die Kurve verändern.",
+    "a": "a (Öffnung)",
+    "b": "b (Position)",
+    "c": "c (Translation)"
+  },
+  "congrats": {
+    "title": "🎉 Du hast die Parabel entdeckt!",
+    "text": "Du begannst mit einer Brücke und einer Antenne. Du hast Bälle geworfen, Abstände gemessen. Und jetzt weißt du, was alles verbindet: die Regel des Brennpunkts und der Leitlinie."
+  },
+  "footer": {
+    "tagline": "Das Fest der Wissenschaft",
+    "module": "Interaktives Modul · Die Parabel"
+  }
+}

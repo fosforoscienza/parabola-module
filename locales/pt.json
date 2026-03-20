@@ -1,0 +1,127 @@
+{
+  "title": "A Parábola — Fosforo Scienza",
+  "logoSub": "A Festa da Ciência",
+  "nav": {
+    "world": "No mundo",
+    "explore": "Explorar",
+    "discover": "Descobrir",
+    "definition": "Definição"
+  },
+  "hero": {
+    "badge": "🌐 Fosforo Scienza — Módulo interativo",
+    "title": "Tudo começa<br>de <span class=\"accent\">uma forma</span>",
+    "sub": "Uma viagem das pontes suspensas aos espelhos dos telescópios, até descobrir — por conta própria — o que é realmente uma parábola.",
+    "cta": "Começar a viagem ↓",
+    "scroll": "rolar"
+  },
+  "world": {
+    "label": "A parábola no mundo",
+    "title": "Esta forma está em todo lugar<br>ao teu redor",
+    "intro": "Antes de qualquer fórmula, olha: quantas vezes por dia encontras esta curva sem o saber?",
+    "caption": "↑ Três cenas animadas: trajetória de lançamento · ponte suspensa · refletor parabólico",
+    "cards": {
+      "bridges": {
+        "title": "Pontes suspensas",
+        "text": "Os cabos da Golden Gate e de quase todas as pontes suspensas desenham uma curva parabólica, perfeita para distribuir o peso."
+      },
+      "mirrors": {
+        "title": "Espelhos parabólicos",
+        "text": "Os telescópios, as antenas satelitais e os refletores de faróis aproveitam a forma parabólica para concentrar raios e sinais num único ponto."
+      },
+      "trajectories": {
+        "title": "Trajetórias",
+        "text": "Um chute, um lançamento, um salto: qualquer objeto lançado no ar percorre exatamente uma parábola."
+      },
+      "architecture": {
+        "title": "Arquitetura",
+        "text": "Arcos parabólicos aparecem em catedrais, estádios e coberturas de grandes espaços: suportam cargas enormes com elegância estrutural."
+      },
+      "food": {
+        "title": "Até na comida",
+        "text": "A seção de um sorvete, a curva de uma banana, o jato d'água de uma fonte: todas parábolas."
+      },
+      "antenna": {
+        "title": "Antenas de TV",
+        "text": "O \"prato\" na varanda dos teus vizinhos é literalmente meia parábola: capta o sinal do satélite e o concentra num ponto preciso."
+      }
+    },
+    "canvasTraj": "⚽ Trajetória",
+    "canvasBridge": "🌉 Ponte suspensa",
+    "canvasReflector": "📡 Refletor"
+  },
+  "canvas": {
+    "directrix": "d (diretriz)"
+  },
+  "explore": {
+    "label": "Atividade 1 e 2",
+    "title": "Brinca com estas formas",
+    "intro": "Ainda não te dizemos nada. Primeiro explora, depois a explicação virá sozinha."
+  },
+  "act1": {
+    "num": "Atividade 1 · Lança!",
+    "title": "Lança a bola",
+    "desc": "Muda o ângulo e a força. Observa o rastro que fica no ar. Que forma tem?",
+    "angle": "Ângulo de lançamento",
+    "force": "Força de lançamento",
+    "launch": "🚀 Lançar",
+    "clear": "Apagar rastros"
+  },
+  "act2": {
+    "num": "Atividade 2 · Refletor",
+    "title": "A antena e os raios",
+    "desc": "Move o cursor para alterar a profundidade da \"tigela\". Nota onde convergem todos os raios paralelos que chegam de cima.",
+    "depth": "Profundidade da antena",
+    "hint": "💡 Todos os raios se encontram no mesmo ponto. Esse ponto chama-se <strong>foco</strong>."
+  },
+  "discover": {
+    "label": "Atividade 3 e 4",
+    "title": "Constrói a curva<br>do zero",
+    "intro": "Estás prestes a descobrir por ti mesmo qual é a regra secreta que gera esta forma."
+  },
+  "act3": {
+    "num": "Atividade 3 · Caça ao ponto",
+    "title": "Encontra os pontos \"certos\"",
+    "desc": "No plano há um ponto <span style=\"color:var(--primary);font-weight:700\">F</span> (foco) e uma linha <span style=\"color:var(--green);font-weight:700\">d</span> (diretriz).<br><br>Clica nos pontos que te pareçam <strong style=\"color:#fff\">equidistantes</strong> <span class=\"tip\">?<span class=\"tip-text\">Equidistante = à mesma distância de duas coisas diferentes</span></span> tanto de F como da reta d.",
+    "reveal": "👁 Revelar a curva",
+    "reset": "Recomeçar",
+    "canvasHint": "Clica onde achas que dist(P,F) = dist(P,d)",
+    "ok": "✅ Muito bem! Esse ponto é realmente equidistante de F e de d!",
+    "ko": "❌ Não exatamente: as duas distâncias não são iguais. Tenta de novo!"
+  },
+  "act4": {
+    "num": "Atividade 4 · Mede as distâncias",
+    "title": "Move o ponto sobre a curva",
+    "desc": "Arrasta o ponto <span style=\"color:var(--primary);font-weight:700\">P</span> ao longo da curva vermelha. Observa as duas distâncias. Notas algo?",
+    "dfLabel": "Distância de F",
+    "ddLabel": "Distância de d",
+    "diffLabel": "Diferença",
+    "drag": "↔ Arrasta P sobre o canvas acima!",
+    "equal": "✨ Sim! As duas distâncias são (quase) idênticas! Isto vale para CADA ponto da curva.",
+    "observe": "↔ Arrasta P e observa as distâncias…"
+  },
+  "def": {
+    "label": "A resposta",
+    "title": "Agora podes dizê-lo tu mesmo:<br>o que é uma parábola?",
+    "intro": "Nas atividades anteriores já descobriste. Aqui está, finalmente, com as palavras da matemática.",
+    "text": "Uma <em>parábola</em> é o conjunto de todos os pontos do plano que são <em>equidistantes</em> de um ponto fixo chamado <span class=\"kw\">foco (F)</span> e de uma reta fixa chamada <span class=\"kw\">diretriz (d)</span>.<br><br>Para cada ponto P da parábola vale sempre:",
+    "form1": "Forma básica — eixo vertical, vértice na origem",
+    "form2": "Forma geral — a determina abertura e direção",
+    "form3": "Eixo horizontal — abre-se para a direita ou esquerda"
+  },
+  "bonus": {
+    "num": "Bónus · Parâmetros",
+    "title": "Brinca com a, b, c",
+    "desc": "Agora que sabes o que é uma parábola, explora como os coeficientes mudam a curva.",
+    "a": "a (abertura)",
+    "b": "b (posição)",
+    "c": "c (translação)"
+  },
+  "congrats": {
+    "title": "🎉 Descobriste a parábola!",
+    "text": "Começaste por uma ponte e uma antena. Lançaste bolas, mediste distâncias. E agora sabes o que une tudo: a regra do foco e da diretriz."
+  },
+  "footer": {
+    "tagline": "A Festa da Ciência",
+    "module": "Módulo interativo · A Parábola"
+  }
+}
