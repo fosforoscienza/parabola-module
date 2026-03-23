@@ -104,7 +104,7 @@
     "label": "La risposta",
     "title": "Ora puoi dirlo tu stesso:<br>cos'è una parabola?",
     "intro": "Nelle attività precedenti l'hai già scoperto. Eccola, finalmente, con le parole della matematica.",
-    "text": "Una <em>parabola</em> è l'insieme di tutti i punti del piano che sono <em>equidistanti</em> da un punto fisso chiamato <span class=\"kw\">fuoco (F)</span> e da una retta fissa chiamata <span class=\"kw\">direttrice (d)</span>.<br><br>Per ogni punto P sulla parabola vale sempre:",
+    "text": "La <em>parabola</em> è il luogo geometrico dei punti P <em>equidistanti</em> da un punto fisso F detto fuoco e da una retta fissa d detta <em>direttrice</em>.<br><br>Per ogni punto P sulla parabola vale sempre:",
     "form1": "Forma base — asse verticale, vertice nell'origine",
     "form2": "Forma generale — a determina apertura e direzione",
     "form3": "Asse orizzontale — si apre a destra o sinistra"
